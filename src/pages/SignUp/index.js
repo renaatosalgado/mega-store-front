@@ -83,7 +83,7 @@ export default function SignUp() {
   }
   return (
     <Container>
-      <Title>My Wallet</Title>
+      <Title>Crie seu cadastro</Title>
 
       <Form onSubmit={handleSubmit}>
         <Input
@@ -132,7 +132,7 @@ export default function SignUp() {
         </Button>
       </Form>
 
-      <StyledLink to="/">Já tem uma conta? Entre agora!</StyledLink>
+      <StyledLink to="/login">Já tem uma conta? Entre agora!</StyledLink>
     </Container>
   );
 }
