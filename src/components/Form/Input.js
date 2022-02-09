@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const Input = styled.input`
-  width: calc(100vw - 50px);
+  width: 350px;
   height: 58px;
   margin-bottom: 13px;
   padding: 15px;
   border-radius: 5px;
+  border: 1px solid #666666;
 
   font-weight: 400;
   font-size: 20px;
@@ -13,12 +14,14 @@ const Input = styled.input`
 
   pointer-events: ${(props) => (props.disabled ? "none" : "all")};
 
-  background-color: ${(props) => (props.disabled ? "#F2F2F2" : "#FFFFFF")};
-  color: ${(props) => (props.disabled ? "#AFAFAF" : "#666666")};
+  opacity: ${(props) => (props.disabled ? 0.7 : 1)};
+  color: ${(props) => (props.disabled ? "#AFAFAF" : "#000000")};
+  background-color: #f5f5f5;
+  
 
   &::placeholder {
     font-weight: 400;
-    color: #000000;
+    color: #666666;
   }
 
   &:focus {

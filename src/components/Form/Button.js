@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  width: calc(100vw - 50px);
+  width: 300px;
   height: 46px;
   display: flex;
   align-items: center;
@@ -17,7 +17,7 @@ const Button = styled.button`
   line-height: 24px;
   text-align: center;
 
-  background-color: #a328d6;
+  background-color: #0433FF;
   color: #ffffff;
 `;
 

@@ -21,7 +21,7 @@ export default function Login() {
 
   useEffect(() => {
     if (auth && auth.token) {
-      navigate("/main");
+      navigate("/home");
     }
     //eslint-disable-next-line
   }, []);
@@ -40,7 +40,7 @@ export default function Login() {
         setIsLoading(false);
 
         login(response.data);
-        navigate("/main");
+        navigate("/home");
       })
       .catch((error) => {
         setIsLoading(false);
@@ -73,7 +73,7 @@ export default function Login() {
 
   return (
     <Container>
-      <Title>My Wallet</Title>
+      <Title>Faça seu login</Title>
       <Form onSubmit={handleSubmit}>
         <Input
           type="email"
