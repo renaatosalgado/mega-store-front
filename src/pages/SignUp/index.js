@@ -47,7 +47,7 @@ export default function SignUp() {
       await api.postSignUp({ ...signUpData });
 
       setIsLoading(false);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       setIsLoading(false);
       if (error.response.status === 409) {

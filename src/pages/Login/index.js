@@ -21,7 +21,7 @@ export default function Login() {
 
   useEffect(() => {
     if (auth && auth.token) {
-      navigate("/home");
+      navigate("/");
     }
     //eslint-disable-next-line
   }, []);
@@ -40,7 +40,7 @@ export default function Login() {
         setIsLoading(false);
 
         login(response.data);
-        navigate("/home");
+        navigate("/");
       })
       .catch((error) => {
         setIsLoading(false);
