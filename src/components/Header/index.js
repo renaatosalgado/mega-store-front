@@ -22,7 +22,7 @@ export default function Header() {
   return (
     <Container>
       <UpperBar>
-        <Logo to='/main'>MegaStore</Logo>
+        <Logo to='/'>MegaStore</Logo>
         <SearchBar>
           <form>
             <Input
@@ -56,13 +56,13 @@ export default function Header() {
         </Cart>
       </UpperBar>
       <LowerBar>
-        <DepartmentLink to='/main'>Department</DepartmentLink>
-        <DepartmentLink to='/main'>Department</DepartmentLink>
-        <DepartmentLink to='/main'>Department</DepartmentLink>
-        <DepartmentLink to='/main'>Department</DepartmentLink>
-        <DepartmentLink to='/main'>Department</DepartmentLink>
-        <DepartmentLink to='/main'>Department</DepartmentLink>
-        <DepartmentLink to='/main'>Department</DepartmentLink>
+        <DepartmentLink to='/'>Informática</DepartmentLink>
+        <DepartmentLink to='/'>Games e PC Gamer</DepartmentLink>
+        <DepartmentLink to='/'>Eletrodomésticos</DepartmentLink>
+        <DepartmentLink to='/'>Celular</DepartmentLink>
+        <DepartmentLink to='/'>Livros</DepartmentLink>
+        <DepartmentLink to='/'>Moda</DepartmentLink>
+        <DepartmentLink to='/'>Casa</DepartmentLink>
       </LowerBar>
     </Container>
   );

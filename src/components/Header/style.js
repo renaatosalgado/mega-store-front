@@ -25,7 +25,7 @@ const LowerBar = styled.div`
     width: 968px;
     height: 40px;
 
-    display: flex;
+    display: inline-flex;
     justify-content: space-between;
     align-items: center;
 
