@@ -18,14 +18,14 @@ const Container = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-    width: 100vw;
-    height: 130px;
+  width: 100vw;
+  height: 130px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    background-color: #0333ff;
+  background-color: #0333ff;
 `;
 
 const Main = styled.div`
@@ -65,7 +65,7 @@ const RightContainer = styled.div`
 
 const ProductPrice = styled.p`
   font-size: 32px;
-  margin: 30px 40px 60px 30px
+  margin: 30px 40px 60px 30px;
 `;
 
 const Description = styled.div`
@@ -74,9 +74,9 @@ const Description = styled.div`
   line-height: 30px;
 
   h2 {
-      font-size: 26px;
-      font-weight: 700;
-      margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
   }
 `;
 
@@ -88,5 +88,5 @@ export {
   RightContainer,
   ProductPrice,
   Description,
-  HeaderContainer
+  HeaderContainer,
 };

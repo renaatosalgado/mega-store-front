@@ -9,7 +9,8 @@ export default function App() {
     price: 15000,
     image:
       "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQzNzn0gpiG4dyxYxP-zHxrLF_LhqT26WDz2ZdcbpZF6KXHtJHhg1ZLKLpmFW2imwYg7foHsaDxHGAdO7QEUiV21vnpPfvFIudmTsj9RTyEsb8EHjQf4SjnSA&usqp=CAE",
-    description: "Essa é a descrição do novíssimo console da Sony. Essa é a descrição do novíssimo console da Sony. Essa é a descrição do novíssimo console da Sony. Essa é a descrição do novíssimo console da Sony.",
+    description:
+      "Essa é a descrição do novíssimo console da Sony. Essa é a descrição do novíssimo console da Sony. Essa é a descrição do novíssimo console da Sony. Essa é a descrição do novíssimo console da Sony.",
   };
 
   return (

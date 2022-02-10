@@ -57,13 +57,13 @@ export default function Header() {
         </Cart>
       </UpperBar>
       <LowerBar>
-        <DepartmentLink to="/">Department</DepartmentLink>
-        <DepartmentLink to="/">Department</DepartmentLink>
-        <DepartmentLink to="/">Department</DepartmentLink>
-        <DepartmentLink to="/">Department</DepartmentLink>
-        <DepartmentLink to="/">Department</DepartmentLink>
-        <DepartmentLink to="/">Department</DepartmentLink>
-        <DepartmentLink to="/">Department</DepartmentLink>
+        <DepartmentLink to="/">Informática</DepartmentLink>
+        <DepartmentLink to="/">Games e PC Gamer</DepartmentLink>
+        <DepartmentLink to="/">Eletrodomésticos</DepartmentLink>
+        <DepartmentLink to="/">Celular</DepartmentLink>
+        <DepartmentLink to="/">Livros</DepartmentLink>
+        <DepartmentLink to="/">Moda</DepartmentLink>
+        <DepartmentLink to="/">Casa</DepartmentLink>
       </LowerBar>
     </Container>
   );

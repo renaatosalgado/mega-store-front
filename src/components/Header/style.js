@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const Container = styled.header`
   height: 130px;
+  width: 968px;
 
   color: #fff;
 
@@ -24,7 +25,7 @@ const LowerBar = styled.div`
   width: 968px;
   height: 40px;
 
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   align-items: center;
 
