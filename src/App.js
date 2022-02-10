@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login, SignUp, SingleProduct } from "./pages";
+import { Login, SignUp, SingleProduct, MainPage } from "./pages";
 import { AuthProvider } from "./contexts/AuthContext";
+import { GlobalStyle } from "./style/style";
 
 export default function App() {
   const product = {
@@ -13,6 +14,7 @@ export default function App() {
 
   return (
     <AuthProvider>
+      <GlobalStyle />
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -28,6 +30,7 @@ export default function App() {
               />
             }
           />
+          <Route path="/main" element={<MainPage />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
