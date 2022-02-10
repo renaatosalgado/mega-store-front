@@ -5,11 +5,11 @@ import { GlobalStyle } from "./style/style";
 
 export default function App() {
   const product = {
-    name: "Console ps5",
-    price: 5000,
+    name: "Sofa de muito luxo de couro sintético",
+    price: 15000,
     image:
-      "https://cdn.dooca.store/1885/products/hno3fswpg81xddwlwtgfk8loffo2fpo8inqo_1600x1600+fill_ffffff.jpg?v=1624107588",
-    description: "Essa é a descrição do novíssimo console da Sony.",
+      "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQzNzn0gpiG4dyxYxP-zHxrLF_LhqT26WDz2ZdcbpZF6KXHtJHhg1ZLKLpmFW2imwYg7foHsaDxHGAdO7QEUiV21vnpPfvFIudmTsj9RTyEsb8EHjQf4SjnSA&usqp=CAE",
+    description: "Essa é a descrição do novíssimo console da Sony. Essa é a descrição do novíssimo console da Sony. Essa é a descrição do novíssimo console da Sony. Essa é a descrição do novíssimo console da Sony.",
   };
 
   return (
@@ -30,7 +30,7 @@ export default function App() {
               />
             }
           />
-          <Route path="/main" element={<MainPage />} />
+          <Route path="/" element={<MainPage />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

@@ -5,6 +5,7 @@ import {
   Button,
   StyledLink,
   Title,
+  Logo,
 } from "../../components/Form";
 import { ThreeDots } from "react-loader-spinner";
 import { useState, useEffect } from "react";
@@ -72,37 +73,40 @@ export default function Login() {
   }
 
   return (
-    <Container>
-      <Title>Faça seu login</Title>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          type="email"
-          placeholder="E-mail"
-          name="email"
-          onChange={handleChange}
-          value={loginData.email}
-          disabled={isLoading}
-          required
-        ></Input>
-        <Input
-          type="password"
-          placeholder="Senha"
-          name="password"
-          onChange={handleChange}
-          value={loginData.password}
-          disabled={isLoading}
-          required
-        ></Input>
-        <Button type="submit" disabled={isLoading}>
-          {isLoading ? (
-            <ThreeDots color="#FFFFFF" height={50} width={50} />
-          ) : (
-            "Entrar"
-          )}
-        </Button>
-      </Form>
+    <>
+      <Logo to="/">MegaStore</Logo>
+      <Container>
+        <Title>Faça seu login</Title>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="email"
+            placeholder="E-mail"
+            name="email"
+            onChange={handleChange}
+            value={loginData.email}
+            disabled={isLoading}
+            required
+          ></Input>
+          <Input
+            type="password"
+            placeholder="Senha"
+            name="password"
+            onChange={handleChange}
+            value={loginData.password}
+            disabled={isLoading}
+            required
+          ></Input>
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <ThreeDots color="#FFFFFF" height={50} width={50} />
+            ) : (
+              "Entrar"
+            )}
+          </Button>
+        </Form>
 
-      <StyledLink to="/sign-up">Primeira vez? Cadastre-se</StyledLink>
-    </Container>
+        <StyledLink to="/sign-up">Primeira vez? Cadastre-se</StyledLink>
+      </Container>
+    </>
   );
 }

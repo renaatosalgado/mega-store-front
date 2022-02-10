@@ -6,7 +6,7 @@ const Form = styled.form`
   align-items: center;
   justify-content: center;
 
-  margin: 30px 0 25px;
+  margin: 20px 0 25px;
 
   font-family: "Raleway", sans-serif;
 `;

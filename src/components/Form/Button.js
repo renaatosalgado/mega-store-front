@@ -17,8 +17,12 @@ const Button = styled.button`
   line-height: 24px;
   text-align: center;
 
-  background-color: #0433FF;
+  background-color: #0333ff;
   color: #ffffff;
+
+  &:hover {
+    filter: brightness(80%);
+  }
 `;
 
 export default Button;

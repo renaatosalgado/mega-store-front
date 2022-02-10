@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Container = styled.div`
+const HeaderContainer = styled.div`
     width: 100vw;
     height: 130px;
 
@@ -8,9 +8,9 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
 
-    background-color: #0333FF;
+    background-color: #0333ff;
 `;
 
 export {
-    Container
+    HeaderContainer
 }
