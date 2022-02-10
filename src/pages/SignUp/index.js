@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import api from "../../services/api";
+import { Logo } from "../../components/Form";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -82,57 +83,60 @@ export default function SignUp() {
     }
   }
   return (
-    <Container>
-      <Title>Crie seu cadastro</Title>
+    <>
+      <Logo to="/">MegaStore</Logo>
+      <Container>
+        <Title>Crie seu cadastro</Title>
 
-      <Form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          placeholder="Nome"
-          name="name"
-          onChange={handleChange}
-          value={signUpData.name}
-          disabled={isLoading}
-          required
-        />
-        <Input
-          type="email"
-          placeholder="E-mail"
-          name="email"
-          onChange={handleChange}
-          value={signUpData.email}
-          disabled={isLoading}
-          required
-        />
-        <Input
-          type="password"
-          placeholder="Senha"
-          name="password"
-          onChange={handleChange}
-          value={signUpData.password}
-          disabled={isLoading}
-          required
-        />
-        <Input
-          type="password"
-          placeholder="Confirme a senha"
-          name="confirm_password"
-          onChange={handleChange}
-          value={signUpData.confirm_password}
-          disabled={isLoading}
-          required
-        />
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            placeholder="Nome"
+            name="name"
+            onChange={handleChange}
+            value={signUpData.name}
+            disabled={isLoading}
+            required
+          />
+          <Input
+            type="email"
+            placeholder="E-mail"
+            name="email"
+            onChange={handleChange}
+            value={signUpData.email}
+            disabled={isLoading}
+            required
+          />
+          <Input
+            type="password"
+            placeholder="Senha"
+            name="password"
+            onChange={handleChange}
+            value={signUpData.password}
+            disabled={isLoading}
+            required
+          />
+          <Input
+            type="password"
+            placeholder="Confirme a senha"
+            name="confirm_password"
+            onChange={handleChange}
+            value={signUpData.confirm_password}
+            disabled={isLoading}
+            required
+          />
 
-        <Button type="submit" disabled={isLoading}>
-          {isLoading ? (
-            <ThreeDots color="#FFFFFF" height={50} width={50} />
-          ) : (
-            "Cadastrar"
-          )}
-        </Button>
-      </Form>
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <ThreeDots color="#FFFFFF" height={50} width={50} />
+            ) : (
+              "Cadastrar"
+            )}
+          </Button>
+        </Form>
 
-      <StyledLink to="/login">Já tem uma conta? Entre agora!</StyledLink>
-    </Container>
+        <StyledLink to="/login">Já tem uma conta? Entre agora!</StyledLink>
+      </Container>
+    </>
   );
 }

@@ -6,6 +6,10 @@ const StyledLink = styled(Link)`
   line-height: 17px;
 
   color: #666666;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export default StyledLink;
