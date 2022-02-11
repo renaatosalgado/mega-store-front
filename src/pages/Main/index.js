@@ -13,8 +13,6 @@ import Header from "../../components/Header";
 import ps from "../../assets/img/ps.jpg";
 import Footer from "../../components/Footer";
 import ScrollButton from "../../components/ScrollTopButton";
-
-import { ChevronBackOutline, ChevronForwardOutline } from "react-ionicons";
 import { useRef } from "react";
 
 export default function MainPage() {
@@ -25,9 +23,9 @@ export default function MainPage() {
   };
 
   const ref1 = useRef(null);
-  const ref2 = useRef(null);
-  const ref3 = useRef(null);
-  const ref4 = useRef(null);
+  // const ref2 = useRef(null);
+  // const ref3 = useRef(null);
+  // const ref4 = useRef(null);
 
   const scroll = (scrollOffset, ref) => {
     ref.current.scrollLeft += scrollOffset;
