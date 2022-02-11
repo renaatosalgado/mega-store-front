@@ -22,7 +22,7 @@ const UpperBar = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  gap: 20px;
+  gap: 10px;
 
   background-color: #1C285C;
 
@@ -106,13 +106,11 @@ const SearchLogo = styled.button`
 `;
 
 const UserEnvironment = styled(Link)`
-  width: 200px;
+  width: 150px;
 
   font-size: 20px;
   font-weight: 400;
   line-height: 21px;
-
-  padding: 10px;
 
   text-align: center;
   text-overflow: ellipsis;
@@ -122,11 +120,13 @@ const UserEnvironment = styled(Link)`
 `;
 
 const Cart = styled(Link)`
-  width: 65px;
+  width: 50px;
   height: 30px;
 
   font-size: 30px;
   color: #FFF;
+
+  padding-right: 30px;
 
   position: relative;
 
