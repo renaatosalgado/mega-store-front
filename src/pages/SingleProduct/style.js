@@ -24,7 +24,7 @@ const HeaderContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: #0333ff;
+  background-color: #1c285c;
 `;
 
 const Main = styled.div`
@@ -79,6 +79,16 @@ const Description = styled.div`
   }
 `;
 
+const FooterContainer = styled.div`
+  height: 130px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #eaeaea;
+`;
+
 export {
   Container,
   Main,
@@ -88,4 +98,5 @@ export {
   ProductPrice,
   Description,
   HeaderContainer,
+  FooterContainer,
 };
