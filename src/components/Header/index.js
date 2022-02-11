@@ -19,26 +19,16 @@ import { SearchOutline } from "react-ionicons";
 import { CartOutline } from "react-ionicons";
 
 export default function Header() {
-<<<<<<< HEAD
-  let totalItensCart = 0;
-
-=======
   let totalItensCart = 14;
   //eslint-disable-next-line
->>>>>>> 2467b263fa74b17f5fb405a83466cbb30f2afee7
   const [isLoading, setIsLoading] = useState(false);
   //eslint-disable-next-line
   const navigate = useNavigate();
   const [search, setSearch] = useState({
     text: "",
   });
-<<<<<<< HEAD
-
-  function handleSearch() { }
-=======
   //eslint-disable-next-line
-  function handleSearch() {}
->>>>>>> 2467b263fa74b17f5fb405a83466cbb30f2afee7
+  function handleSearch() { }
 
   return (
     <Container>
