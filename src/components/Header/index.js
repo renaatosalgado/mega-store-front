@@ -28,7 +28,7 @@ export default function Header() {
     text: "",
   });
   //eslint-disable-next-line
-  function handleSearch() {}
+  function handleSearch() { }
 
   return (
     <Container>
