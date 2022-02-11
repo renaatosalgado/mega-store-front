@@ -4,7 +4,6 @@ import {
   Input,
   Cart,
   Container,
-  Logo,
   LowerBar,
   SearchBar,
   SearchLogo,
@@ -14,11 +13,13 @@ import {
   DepartmentLink,
 } from "./style";
 
+import Logo from "../../assets/img/mega-store-logo-blank.png";
+
 import { SearchOutline } from "react-ionicons";
 import { CartOutline } from "react-ionicons";
 
 export default function Header() {
-  let totalItensCart = 14;
+  let totalItensCart = 0;
 
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -26,12 +27,12 @@ export default function Header() {
     text: "",
   });
 
-  function handleSearch() {}
+  function handleSearch() { }
 
   return (
     <Container>
       <UpperBar>
-        <Logo to="/">MegaStore</Logo>
+        <img src={Logo} alt="mega-store-logo-png" onClick={() => navigate("/")} />
         <SearchBar>
           <form>
             <Input
@@ -44,7 +45,7 @@ export default function Header() {
               required
             />
             <SearchLogo type="submit">
-              <SearchOutline color={"#000"} width="30px" height="30px" />
+              <ion-icon name="search-outline"></ion-icon>
             </SearchLogo>
           </form>
         </SearchBar>
@@ -52,7 +53,7 @@ export default function Header() {
           <span>Entrar</span>
         </UserEnvironment>
         <Cart to="/cart">
-          <CartOutline color={"#00000"} height="30px" width="30px" />
+          <ion-icon name="cart-outline"></ion-icon>
           <TotalItensCart>{totalItensCart}</TotalItensCart>
         </Cart>
       </UpperBar>

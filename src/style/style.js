@@ -34,6 +34,12 @@ const GlobalStyle = createGlobalStyle`
     body {
         line-height: 1;
         font-family: Raleway;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        overflow-y: scroll;
+    }
+    body::-webkit-scrollbar {
+        display: none;
     }
     a {
         text-decoration: none;
