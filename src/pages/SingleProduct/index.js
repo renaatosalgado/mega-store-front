@@ -11,11 +11,14 @@ import {
   ProductPrice,
   Description,
   HeaderContainer,
+  FooterContainer,
 } from "./style";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { ThreeDots } from "react-loader-spinner";
+import ScrollButton from "../../components/ScrollTopButton";
+import Footer from "../../components/Footer";
 
 export default function SingleProduct() {
   const [product, setProduct] = useState({});
@@ -50,7 +53,7 @@ export default function SingleProduct() {
       })
       .then(() => {
         setIsLoading(false);
-        navigate("/cart")
+        navigate("/cart");
       })
       .catch((err) => {
         Swal.fire({
@@ -93,6 +96,10 @@ export default function SingleProduct() {
           </>
         )}
       </Container>
+      <ScrollButton />
+      <FooterContainer>
+        <Footer />
+      </FooterContainer>
     </>
   );
 }

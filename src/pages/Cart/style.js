@@ -26,7 +26,7 @@ const HeaderContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: #0333ff;
+  background-color: #1c285c;
 `;
 
 const Title = styled.div`
@@ -94,6 +94,16 @@ const Quantity = styled.div`
   }
 `;
 
+const FooterContainer = styled.div`
+  height: 130px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #eaeaea;
+`;
+
 export {
   Container,
   HeaderContainer,
@@ -105,4 +115,5 @@ export {
   Name,
   Price,
   Quantity,
+  FooterContainer,
 };
