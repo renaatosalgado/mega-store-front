@@ -14,9 +14,16 @@ function postSignUp(body) {
   return promise;
 }
 
+function getSingleProduct(productId) {
+  const promise = axios.get(`${BASE_URL}/products/${productId}`);
+
+  return promise;
+}
+
 const api = {
   postLogin,
   postSignUp,
+  getSingleProduct
 };
 
 export default api;

@@ -4,7 +4,6 @@ const Container = styled.div`
   background-color: #ffffff;
 
   width: 100vw;
-  height: 500px;
 
   margin: 50px auto;
   font-family: "Raleway", sans-serif;

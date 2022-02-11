@@ -19,13 +19,14 @@ import { CartOutline } from "react-ionicons";
 
 export default function Header() {
   let totalItensCart = 14;
-
+  //eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
+  //eslint-disable-next-line
   const navigate = useNavigate();
   const [search, setSearch] = useState({
     text: "",
   });
-
+  //eslint-disable-next-line
   function handleSearch() {}
 
   return (
