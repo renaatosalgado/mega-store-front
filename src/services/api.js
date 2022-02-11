@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://mega-store-back-driven.herokuapp.com";
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function postLogin(body) {
   const promise = axios.post(`${BASE_URL}/login`, body);
@@ -23,7 +23,7 @@ function getSingleProduct(productId) {
 const api = {
   postLogin,
   postSignUp,
-  getSingleProduct
+  getSingleProduct,
 };
 
 export default api;
