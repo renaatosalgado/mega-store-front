@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://mega-store.vercel.app";
+const BASE_URL = "https://mega-store-back-driven.herokuapp.com";
 
 function postLogin(body) {
   const promise = axios.post(`${BASE_URL}/login`, body);
