@@ -13,8 +13,7 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
 
   gap: 30px;
 `;
@@ -31,8 +30,7 @@ const HeaderContainer = styled.div`
 `;
 
 const Title = styled.div`
-  width: 938px;
-  border-bottom: 1px solid #dddddd;
+  width: 100%;
 
   h1 {
     font-size: 28px;
@@ -55,6 +53,10 @@ const Total = styled.div`
 
 const Product = styled.div`
   display: flex;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+  padding: 30px;
+  margin-left: 20px;
 `;
 
 const Image = styled.img`
@@ -71,6 +73,7 @@ const RightContainer = styled.div`
 
 const Name = styled.div`
   margin-bottom: 10px;
+  font-weight: bold;
 `;
 
 const Price = styled.div`

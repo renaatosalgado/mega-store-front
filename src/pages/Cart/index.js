@@ -13,13 +13,27 @@ import {
 } from "./style";
 
 import { RemoveCircleOutline, AddCircleOutline } from "react-ionicons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import api from "../../services/api";
+import useAuth from "../../hooks/useAuth";
 
 export default function Cart() {
+  const [cart, setCart] = useState([]);
   const [quantity, setQuantity] = useState(1);
   let item = 180;
   let orderSum = item * quantity;
   let total = orderSum;
+  const { auth } = useAuth();
+
+  useEffect(() => {
+    api
+      .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
+      .then((res) => {
+        setCart(res.data);
+      })
+      .catch((err) => console.log(err));
+    //eslint-disable-next-line
+  }, []);
 
   function addQuantity() {
     setQuantity(quantity + 1);
@@ -42,32 +56,34 @@ export default function Cart() {
         <Title>
           <h1>Carrinho de compras</h1>
         </Title>
-        <Product>
-          <Image />
-          <RightContainer>
-            <Name>Nome qualquer</Name>
-            <Price>R$ {item}</Price>
-            <Quantity>
-              <div className="remove" onClick={removeQuantity}>
-                <RemoveCircleOutline
-                  color={"red"}
-                  height="20px"
-                  title={"Remover"}
-                  width="20px"
-                />
-              </div>
-              <div className="quantity">{quantity}</div>
-              <div className="add" onClick={addQuantity}>
-                <AddCircleOutline
-                  color={"green"}
-                  height="20px"
-                  title={"Acrescentar"}
-                  width="20px"
-                />
-              </div>
-            </Quantity>
-          </RightContainer>
-        </Product>
+        {cart.map((product, index) => (
+          <Product key={index}>
+            <Image src={product.image} />
+            <RightContainer>
+              <Name>{product.name}</Name>
+              <Price>R$ {product.price}</Price>
+              <Quantity>
+                <div className="remove" onClick={removeQuantity}>
+                  <RemoveCircleOutline
+                    color={"red"}
+                    height="20px"
+                    title={"Remover"}
+                    width="20px"
+                  />
+                </div>
+                <div className="quantity">{quantity}</div>
+                <div className="add" onClick={addQuantity}>
+                  <AddCircleOutline
+                    color={"green"}
+                    height="20px"
+                    title={"Acrescentar"}
+                    width="20px"
+                  />
+                </div>
+              </Quantity>
+            </RightContainer>
+          </Product>
+        ))}
         <Total>
           <p>Frete único: R$ 25,00</p>
           <p className="total">

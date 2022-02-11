@@ -25,11 +25,17 @@ function postAddToCart(body, token) {
   return promise;
 }
 
+function getItensFromCart(token) {
+  const promise = axios.get(`${BASE_URL}/get-cart`, token);
+  return promise;
+}
+
 const api = {
   postLogin,
   postSignUp,
   getSingleProduct,
-  postAddToCart
+  postAddToCart,
+  getItensFromCart,
 };
 
 export default api;

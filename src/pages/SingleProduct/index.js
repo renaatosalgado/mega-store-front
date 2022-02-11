@@ -48,7 +48,10 @@ export default function SingleProduct() {
       .postAddToCart(product, {
         headers: { Authorization: `Bearer ${auth.token}` },
       })
-      .then(setIsLoading(false))
+      .then(() => {
+        setIsLoading(false);
+        navigate("/cart")
+      })
       .catch((err) => {
         Swal.fire({
           icon: "error",
