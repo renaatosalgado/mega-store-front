@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         line-height: 1;
         font-family: Raleway;
+        background-color: #EAEDED;
     }
     a {
         text-decoration: none;

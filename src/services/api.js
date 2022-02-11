@@ -20,10 +20,16 @@ function getSingleProduct(productId) {
   return promise;
 }
 
+function postAddToCart(body, token) {
+  const promise = axios.post(`${BASE_URL}/cart`, body, token);
+  return promise;
+}
+
 const api = {
   postLogin,
   postSignUp,
   getSingleProduct,
+  postAddToCart
 };
 
 export default api;

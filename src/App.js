@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login, SignUp, SingleProduct, MainPage } from "./pages";
+import { Login, SignUp, SingleProduct, MainPage, Cart } from "./pages";
 import { AuthProvider } from "./contexts/AuthContext";
 import { GlobalStyle } from "./style/style";
 
@@ -18,10 +18,11 @@ export default function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/product/:productId" element={<SingleProduct />} />
-          <Route path="/" element={<MainPage />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
