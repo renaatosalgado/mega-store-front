@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function postLogin(body) {
   const promise = axios.post(`${BASE_URL}/login`, body);
@@ -14,9 +14,16 @@ function postSignUp(body) {
   return promise;
 }
 
+function getSingleProduct(productId) {
+  const promise = axios.get(`${BASE_URL}/products/${productId}`);
+
+  return promise;
+}
+
 const api = {
   postLogin,
   postSignUp,
+  getSingleProduct,
 };
 
 export default api;
