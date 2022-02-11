@@ -21,7 +21,7 @@ function getSingleProduct(productId) {
 }
 
 function postAddToCart(body, token) {
-  const promise = axios.post(`${BASE_URL}/cart`, body, token);
+  const promise = axios.post(`${BASE_URL}/add-to-cart`, body, token);
   return promise;
 }
 
