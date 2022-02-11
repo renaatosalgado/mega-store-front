@@ -30,7 +30,8 @@ const ScrollButton = () => {
             <CaretUpOutline
                 onClick={scrollToTop}
                 style={{ display: visible ? 'inline' : 'none' }}
-                color={'#0333ff'}
+                color={'#FFF'}
+                border={'1px solid #0227CC'}
                 height="50px"
                 width="50px"
             />

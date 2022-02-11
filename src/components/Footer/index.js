@@ -1,10 +1,16 @@
-import { Logo } from "../Header/style";
-import { Container } from "./style";
+import { useNavigate } from "react-router-dom";
+import Logo from "../../assets/img/mega-store-logo-blank.png";
+import { Container, LogoContainer } from "./style";
 
 export default function Footer() {
+
+    const navigate = useNavigate();
+
     return (
         <Container>
-            <Logo to='/'>MEGASTORE</Logo>
+            <LogoContainer>
+                <img src={Logo} alt="mega-store-logo-png" onClick={() => navigate("/")} />
+            </LogoContainer>
         </Container>
     );
 }

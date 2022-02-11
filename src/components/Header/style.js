@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 
 const Container = styled.header`
   height: 130px;
-  width: 968px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   color: #fff;
 
-  background-color: #0333ff;
+  background-color: #1C285C;
 `;
 
 const UpperBar = styled.div`
@@ -19,6 +23,12 @@ const UpperBar = styled.div`
   align-items: center;
 
   gap: 20px;
+
+  background-color: #1C285C;
+
+  img {
+    cursor: pointer;
+  }
 `;
 
 const LowerBar = styled.div`
@@ -30,6 +40,8 @@ const LowerBar = styled.div`
   align-items: center;
 
   gap: 15px;
+
+  background-color: #1C285C;
 `;
 
 const DepartmentLink = styled(Link)`
@@ -44,24 +56,7 @@ const DepartmentLink = styled(Link)`
   color: #fff;
 `;
 
-const Logo = styled(Link)`
-  height: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 36px;
-  font-weight: 200;
-  line-height: 30px;
-  letter-spacing: -2px;
-
-  font-family: "Saira Stencil One", cursive;
-`;
-
 const SearchBar = styled.div`
-  height: 100%;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,13 +88,21 @@ const Input = styled.input`
 const SearchLogo = styled.button`
   all: unset;
   box-sizing: border-box;
-  cursor: pointer;
-
+  
   height: 100%;
+  
+  font-size: 30px;
+  color: #000;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
   position: absolute;
   top: 0px;
   right: 10px;
+  
+  cursor: pointer;
 `;
 
 const UserEnvironment = styled(Link)`
@@ -122,6 +125,9 @@ const Cart = styled(Link)`
   width: 65px;
   height: 30px;
 
+  font-size: 30px;
+  color: #FFF;
+
   position: relative;
 
   cursor: pointer;
@@ -140,7 +146,6 @@ const TotalItensCart = styled.span`
 export {
   Container,
   Cart,
-  Logo,
   LowerBar,
   SearchBar,
   SearchLogo,

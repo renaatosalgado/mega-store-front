@@ -4,7 +4,6 @@ import {
   Input,
   Cart,
   Container,
-  Logo,
   LowerBar,
   SearchBar,
   SearchLogo,
@@ -13,6 +12,8 @@ import {
   TotalItensCart,
   DepartmentLink,
 } from "./style";
+
+import Logo from "../../assets/img/mega-store-logo-blank.png";
 
 import { SearchOutline } from "react-ionicons";
 import { CartOutline } from "react-ionicons";
@@ -27,12 +28,12 @@ export default function Header() {
     text: "",
   });
   //eslint-disable-next-line
-  function handleSearch() {}
+  function handleSearch() { }
 
   return (
     <Container>
       <UpperBar>
-        <Logo to="/">MegaStore</Logo>
+        <img src={Logo} alt="mega-store-logo-png" onClick={() => navigate("/")} />
         <SearchBar>
           <form>
             <Input
@@ -45,7 +46,7 @@ export default function Header() {
               required
             />
             <SearchLogo type="submit">
-              <SearchOutline color={"#000"} width="30px" height="30px" />
+              <ion-icon name="search-outline"></ion-icon>
             </SearchLogo>
           </form>
         </SearchBar>
@@ -53,7 +54,7 @@ export default function Header() {
           <span>Entrar</span>
         </UserEnvironment>
         <Cart to="/cart">
-          <CartOutline color={"#00000"} height="30px" width="30px" />
+          <ion-icon name="cart-outline"></ion-icon>
           <TotalItensCart>{totalItensCart}</TotalItensCart>
         </Cart>
       </UpperBar>
@@ -61,7 +62,7 @@ export default function Header() {
         <DepartmentLink to="/">Informática</DepartmentLink>
         <DepartmentLink to="/">Games e PC Gamer</DepartmentLink>
         <DepartmentLink to="/">Eletrodomésticos</DepartmentLink>
-        <DepartmentLink to="/">Celular</DepartmentLink>
+        <DepartmentLink to="/">Celulares</DepartmentLink>
         <DepartmentLink to="/">Livros</DepartmentLink>
         <DepartmentLink to="/">Moda</DepartmentLink>
         <DepartmentLink to="/">Casa</DepartmentLink>

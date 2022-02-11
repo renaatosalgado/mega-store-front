@@ -1,25 +1,22 @@
 import styled from "styled-components";
 
 const HeaderContainer = styled.div`
-  width: 100vw;
   height: 130px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background-color: #0333ff;
+  background-color: #1C285C;
 `;
 
 const Container = styled.main`
-  width: 100%;
   min-height: calc(100vh - 130px);
 
   display: flex;
   justify-content: center;
-  align-items: center;
 
-  background-color: #f5f5f5;
+  background-color: #FFF;
 `;
 
 const SubContainer = styled.div`
@@ -33,23 +30,20 @@ const SubContainer = styled.div`
 `;
 
 const Department = styled.div`
-  width: 100%;
+	min-width: 968px;
   height: 320px;
 
   border-radius: 10px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
 
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  overflow: hidden;
+	overflow: hidden;
 
   background-color: #fff;
 
-  scroll-behavior: smooth;
+	position: relative;
 `;
 
 const DepHeader = styled.header`
-  width: 100%;
   height: 40px;
 
   display: flex;
@@ -61,15 +55,30 @@ const DepHeader = styled.header`
 
   padding-left: 20px;
 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   border-bottom: 0.5px solid #eaeaea;
+
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+
+	color: #FFF;
+	background-color: #283880;
 `;
 
 const ItemsContainer = styled.div`
-  width: 100%;
-
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+	overflow-x: scroll;
+	overflow-y: hidden;
+
+	padding-bottom: 17px;
+	box-sizing: content-box;
+
+  scroll-behavior: smooth;
+
+	white-space: nowrap;
 
   padding: 20px;
 
@@ -84,7 +93,7 @@ const Items = styled.div`
   flex-direction: column;
 
   border-radius: 10px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
 
   padding: 15px;
 
@@ -93,8 +102,8 @@ const Items = styled.div`
     height: 50%;
   }
   .product-image {
-    width: 80%;
-    height: 80%;
+    width: 120px;
+    height: 143px;
 
     border-radius: 5px;
 
@@ -105,7 +114,7 @@ const Items = styled.div`
 
   .info-wrapper {
     min-width: 100%;
-    height: 50%;
+    height: auto;
 
     display: flex;
     flex-direction: column;
@@ -119,7 +128,7 @@ const Items = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
 
-      margin-bottom: 20px;
+			padding-top: 10px;
     }
 
     span:last-of-type {
@@ -131,7 +140,6 @@ const Items = styled.div`
 `;
 
 const FooterContainer = styled.div`
-  width: 100%;
   height: 130px;
 
   display: flex;
@@ -141,13 +149,46 @@ const FooterContainer = styled.div`
   background-color: #eaeaea;
 `;
 
+const HorizontalScrollButton = styled.button`
+	min-width: 50px;
+	min-height: 50px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	outline: 0;
+	transition: 0.5s;
+	opacity: 0.8;
+
+	position: absolute;
+	${props => props.right === true ? 'right: 10px;' : 'left: 10px;'}
+	top: 45%;
+	z-index: 99;
+
+	border-radius: 50%;
+	
+	color: #FFF;
+	font-size: 25px;
+
+	background-color: rgba(0,0,0,.8);
+
+	cursor: pointer;
+
+	&:hover {
+		opacity: 1;
+	}
+
+`
+
 export {
-  HeaderContainer,
-  ItemsContainer,
-  Container,
-  DepHeader,
-  Department,
-  Items,
-  SubContainer,
-  FooterContainer,
+	HeaderContainer,
+	ItemsContainer,
+	Container,
+	DepHeader,
+	Department,
+	Items,
+	SubContainer,
+	FooterContainer,
+	HorizontalScrollButton
 };
