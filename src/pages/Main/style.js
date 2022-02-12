@@ -86,7 +86,7 @@ const ItemsContainer = styled.div`
 
 	white-space: nowrap;
 
-  padding: 20px;
+  padding: 15px 25px;
 
   gap: 30px;
 `;
@@ -100,7 +100,7 @@ const Items = styled.div`
   border-radius: 10px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
 
-  padding: 15px;
+  padding: 16px;
 
   cursor: pointer;
 
@@ -127,7 +127,7 @@ const Items = styled.div`
     flex-direction: column;
 
     span:first-of-type {
-      height: 36px;
+      height: 43px;
 
       font-size: 14px;
       font-weight: 200;
@@ -135,13 +135,12 @@ const Items = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
 
-			padding-top: 10px;
+			margin-top: 10px;
     }
 
     span:last-of-type {
       font-size: 18px;
       font-weight: 700;
-      line-height: 30px;
     }
   }
 `;
