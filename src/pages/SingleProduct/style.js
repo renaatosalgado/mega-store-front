@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  background-color: #ffffff;
 
-  width: 100vw;
+  min-width: 968px;
+  height: calc(100vh - 260px);
 
   margin: 50px auto;
   font-family: "Raleway", sans-serif;
@@ -12,6 +12,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  background-color: #ffffff;
 
   gap: 30px;
 `;
@@ -27,12 +29,16 @@ const HeaderContainer = styled.div`
   background-color: #1c285c;
 `;
 
+const MainContainer = styled.div`
+  max-width: 968px;
+`;
+
 const Main = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
-  margin-top: 30px;
+  margin: 30px 0;
 `;
 
 const ProductImage = styled.img`
@@ -68,8 +74,9 @@ const ProductPrice = styled.p`
 `;
 
 const Description = styled.div`
+  text-align: left;
   word-break: break-word;
-  padding: 30px;
+  padding: 60px 0;
   line-height: 30px;
 
   h2 {
@@ -86,7 +93,8 @@ const FooterContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: #eaeaea;
+  position: absolute;
+  bottom: 0;
 `;
 
 export {
@@ -99,4 +107,5 @@ export {
   Description,
   HeaderContainer,
   FooterContainer,
+  MainContainer
 };

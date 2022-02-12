@@ -87,6 +87,7 @@ const ItemsContainer = styled.div`
 	white-space: nowrap;
 
   padding: 15px 25px;
+  padding-bottom: 25px;
 
   gap: 30px;
 `;

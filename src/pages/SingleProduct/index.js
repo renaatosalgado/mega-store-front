@@ -11,7 +11,7 @@ import {
   ProductPrice,
   Description,
   HeaderContainer,
-  FooterContainer,
+  MainContainer,
 } from "./style";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -77,7 +77,7 @@ export default function SingleProduct() {
         {notFound ? (
           "Produto não localizado."
         ) : (
-          <>
+          <MainContainer>
             <Main>
               <ProductImage src={product.image}></ProductImage>
               <RightContainer>
@@ -96,13 +96,11 @@ export default function SingleProduct() {
               <h2>Descrição</h2>
               {product.description}
             </Description>
-          </>
+          </MainContainer>
         )}
       </Container>
       <ScrollButton />
-      <FooterContainer>
-        <Footer />
-      </FooterContainer>
+      <Footer />
     </>
   );
 }
