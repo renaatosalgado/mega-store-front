@@ -9,10 +9,14 @@ export const Button = styled.div`
    font-size: 3rem;
    z-index: 1;
    cursor: pointer;
-
-   color: #0377FF;
-
+   
    display: ${props => props.isVisible ? 'inline' : 'none'};
+   
+   & > * {
+      color: #0377FF;
+      -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+      filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+   }
 `;
 
 export default Button;
