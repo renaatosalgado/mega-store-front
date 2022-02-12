@@ -52,7 +52,7 @@ export default function Header() {
           </form>
         </SearchBar>
         <UserEnvironment to="/login">
-          {auth.name
+          {auth?.name
             ? <span>Olá, {auth.name}</span>
             : <span>Entrar</span>
           }
