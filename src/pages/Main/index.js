@@ -10,22 +10,15 @@ import {
     SubContainer,
 } from "./style";
 import Header from "../../components/Header";
-import ps from "../../assets/img/ps.jpg";
 import Footer from "../../components/Footer";
 import ScrollButton from "../../components/ScrollTopButton";
 
 import { useEffect, useRef, useState } from "react";
-import useAuth from "../../hooks/useAuth";
 import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 
 export default function MainPage() {
-    // const product = {
-    //     name: "Playstation 5",
-    //     price: "999,99",
-    //     img: ps,
-    // };
 
     const [books, setBooks] = useState('');
     const [cellphones, setCellphones] = useState('');
@@ -33,8 +26,8 @@ export default function MainPage() {
     const [homeThings, setHomeThings] = useState('');
 
     const [isLoading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+    // const [error, setError] = useState(false);
+    // const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
