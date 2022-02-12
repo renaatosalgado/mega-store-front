@@ -14,6 +14,7 @@ import {
 } from "./style";
 
 import Logo from "../../assets/img/mega-store-logo-blank.png";
+import useAuth from "../../hooks/useAuth";
 
 export default function Header() {
   let totalItensCart = 14;
@@ -24,6 +25,9 @@ export default function Header() {
   const [search, setSearch] = useState({
     text: "",
   });
+
+  const { auth } = useAuth();
+
   //eslint-disable-next-line
   function handleSearch() { }
 
@@ -43,12 +47,15 @@ export default function Header() {
               required
             />
             <SearchLogo type="submit">
-              <ion-icon name="search-outline"></ion-icon>
+              <ion-icon onClick={() => handleSearch()} name="search-outline"></ion-icon>
             </SearchLogo>
           </form>
         </SearchBar>
         <UserEnvironment to="/login">
-          <span>Entrar</span>
+          {auth.name
+            ? <span>Olá, {auth.name}</span>
+            : <span>Entrar</span>
+          }
         </UserEnvironment>
         <Cart to="/cart">
           <ion-icon name="cart-outline"></ion-icon>
@@ -56,13 +63,13 @@ export default function Header() {
         </Cart>
       </UpperBar>
       <LowerBar>
-        <DepartmentLink to="/">Informática</DepartmentLink>
-        <DepartmentLink to="/">Games e PC Gamer</DepartmentLink>
-        <DepartmentLink to="/">Eletrodomésticos</DepartmentLink>
-        <DepartmentLink to="/">Celulares</DepartmentLink>
-        <DepartmentLink to="/">Livros</DepartmentLink>
-        <DepartmentLink to="/">Moda</DepartmentLink>
-        <DepartmentLink to="/">Casa</DepartmentLink>
+        <DepartmentLink to="/informatics">Informática</DepartmentLink>
+        <DepartmentLink to="/games">Games e PC Gamer</DepartmentLink>
+        <DepartmentLink to="/eletro">Eletrodomésticos</DepartmentLink>
+        <DepartmentLink to="/cellphones">Celulares</DepartmentLink>
+        <DepartmentLink to="/books">Livros</DepartmentLink>
+        <DepartmentLink to="/fashion">Moda</DepartmentLink>
+        <DepartmentLink to="/home-things">Casa</DepartmentLink>
       </LowerBar>
     </Container>
   );
