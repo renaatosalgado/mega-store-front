@@ -7,8 +7,15 @@ const StyledLink = styled(Link)`
 
   color: #666666;
 
-  &:hover {
-    text-decoration: underline;
+  span:last-of-type {
+    border-radius: 5px;
+
+    padding: 5px;
+    margin-left: 10px;
+    
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 

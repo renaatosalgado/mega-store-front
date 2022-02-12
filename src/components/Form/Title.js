@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 const Title = styled.div`
   font-size: 32px;
-  font-family: "Saira Stencil One", cursive;
-  font-weight: 400;
+  font-family: "Raleway";
+  font-weight: 700;
 
   margin-bottom: 16px;
 
-  color: #666666;
+  color: #666;
 `;
 
 export default Title;

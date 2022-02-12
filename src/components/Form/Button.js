@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  width: 300px;
+  width: 350px;
   height: 46px;
   display: flex;
   align-items: center;
@@ -17,11 +17,11 @@ const Button = styled.button`
   line-height: 24px;
   text-align: center;
 
-  background-color: #0333ff;
+  background-color: #1565C0;
   color: #ffffff;
 
   &:hover {
-    filter: brightness(80%);
+    filter: brightness(120%);
   }
 `;
 
