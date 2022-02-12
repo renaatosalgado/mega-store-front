@@ -41,6 +41,10 @@ const Department = styled.div`
   background-color: #fff;
 
 	position: relative;
+
+  &:last-child {
+    margin-bottom: 100px;
+  }
 `;
 
 const DepHeader = styled.header`
@@ -66,14 +70,15 @@ const DepHeader = styled.header`
 `;
 
 const ItemsContainer = styled.div`
+  ${props => props.isLoading ? 'height: 80%;' : ''}
+
   display: flex;
-  justify-content: flex-start;
+  justify-content: ${props => props.isLoading ? 'center' : 'flex-start'};
   align-items: center;
 
 	overflow-x: scroll;
 	overflow-y: hidden;
-
-	padding-bottom: 17px;
+  
 	box-sizing: content-box;
 
   scroll-behavior: smooth;
@@ -96,6 +101,8 @@ const Items = styled.div`
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
 
   padding: 15px;
+
+  cursor: pointer;
 
   .image-wraper {
     width: 100%;
@@ -182,13 +189,13 @@ const HorizontalScrollButton = styled.button`
 `
 
 export {
-	HeaderContainer,
-	ItemsContainer,
-	Container,
-	DepHeader,
-	Department,
-	Items,
-	SubContainer,
-	FooterContainer,
-	HorizontalScrollButton
+  HeaderContainer,
+  ItemsContainer,
+  Container,
+  DepHeader,
+  Department,
+  Items,
+  SubContainer,
+  FooterContainer,
+  HorizontalScrollButton
 };
