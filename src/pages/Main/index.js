@@ -26,7 +26,6 @@ export default function MainPage() {
     //     price: "999,99",
     //     img: ps,
     // };
-    const { auth } = useAuth();
 
     const [books, setBooks] = useState('');
     const [cellphones, setCellphones] = useState('');
@@ -74,7 +73,7 @@ export default function MainPage() {
 
     const scroll = (scrollOffset, ref) => {
         ref.current.scrollLeft += scrollOffset;
-    }
+    };
 
     return (
         <>

@@ -10,12 +10,15 @@ import {
   Name,
   Price,
   Quantity,
+  FooterContainer,
 } from "./style";
 
 import { RemoveCircleOutline, AddCircleOutline } from "react-ionicons";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
+import ScrollButton from "../../components/ScrollTopButton";
+import Footer from "../../components/Footer";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
@@ -92,6 +95,10 @@ export default function Cart() {
           </p>
         </Total>
       </Container>
+      <ScrollButton />
+      <FooterContainer>
+        <Footer />
+      </FooterContainer>
     </>
   );
 }
