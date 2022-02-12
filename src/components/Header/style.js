@@ -53,7 +53,16 @@ const DepartmentLink = styled(Link)`
   font-weight: 700;
   line-height: 17.61px;
 
+  padding: 5px 15px;
+  border-radius: 5px;
+
   color: #fff;
+
+  &:hover {
+    background-color: #1565C0;
+    transition: 0.5s;
+    opacity: 0.9;
+  }
 `;
 
 const SearchBar = styled.div`
@@ -105,7 +114,7 @@ const SearchLogo = styled.button`
   cursor: pointer;
 `;
 
-const UserEnvironment = styled(Link)`
+const UserEnvironment = styled.div`
   width: 150px;
 
   font-size: 20px;
@@ -115,6 +124,10 @@ const UserEnvironment = styled(Link)`
   text-align: center;
   text-overflow: ellipsis;
   overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   cursor: pointer;
 `;
