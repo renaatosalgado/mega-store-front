@@ -14,40 +14,46 @@ import {
 } from "./style";
 
 import { RemoveCircleOutline, AddCircleOutline } from "react-ionicons";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
 import ScrollButton from "../../components/ScrollTopButton";
 import Footer from "../../components/Footer";
+import { useNavigate } from "react-router-dom";
+import CartContext from "../../contexts/CartContext";
 
 export default function Cart() {
-  const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState(1);
-  let item = 180;
-  let orderSum = item * quantity;
-  let total = orderSum;
+  const [cartItens, setCartItens] = useState([]);
+  const [itemQuantity, setItemQuantity] = useState(1);
   const { auth } = useAuth();
+  //eslint-disable-next-line
+  const { cartQuantity, setcartQuantity } = useContext(CartContext);
+  const navigate = useNavigate();
+  let item = 180;
+  let orderSum = item * itemQuantity;
+  let total = orderSum;
 
   useEffect(() => {
     api
       .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
       .then((res) => {
-        setCart(res.data);
+        setCartItens(res.data);
+        setcartQuantity(res.data.length);
       })
       .catch((err) => console.log(err));
     //eslint-disable-next-line
   }, []);
 
-  function addQuantity() {
-    setQuantity(quantity + 1);
-    console.log(quantity);
+  function addQuantity(productId) {
+    setItemQuantity(itemQuantity + 1);
+    console.log(itemQuantity);
   }
 
-  function removeQuantity() {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
+  function removeQuantity(productId) {
+    if (itemQuantity > 0) {
+      setItemQuantity(itemQuantity - 1);
     }
-    console.log(quantity);
+    console.log(itemQuantity);
   }
 
   return (
@@ -59,14 +65,24 @@ export default function Cart() {
         <Title>
           <h1>Carrinho de compras</h1>
         </Title>
-        {cart.map((product, index) => (
+        {cartItens.map((product, index) => (
           <Product key={index}>
-            <Image src={product.image} />
+            <Image
+              src={product.image}
+              onClick={() => navigate(`/product/${product._id}`)}
+            />
             <RightContainer>
-              <Name>{product.name}</Name>
+              <Name onClick={() => navigate(`/product/${product._id}`)}>
+                {product.name}
+              </Name>
               <Price>R$ {product.price}</Price>
               <Quantity>
-                <div className="remove" onClick={removeQuantity}>
+                <div
+                  className="remove"
+                  onClick={() => {
+                    removeQuantity(product._id);
+                  }}
+                >
                   <RemoveCircleOutline
                     color={"red"}
                     height="20px"
@@ -74,8 +90,13 @@ export default function Cart() {
                     width="20px"
                   />
                 </div>
-                <div className="quantity">{quantity}</div>
-                <div className="add" onClick={addQuantity}>
+                <div className="quantity">{itemQuantity}</div>
+                <div
+                  className="add"
+                  onClick={() => {
+                    addQuantity(product._id);
+                  }}
+                >
                   <AddCircleOutline
                     color={"green"}
                     height="20px"

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Input,
@@ -14,27 +14,41 @@ import {
 } from "./style";
 
 import Logo from "../../assets/img/mega-store-logo-blank.png";
+import CartContext from "../../contexts/CartContext";
+import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
 
 export default function Header() {
-  let totalItensCart = 14;
+  const { setCartQuantity, cartQuantity } = useContext(CartContext);
   //eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
-  //eslint-disable-next-line
   const navigate = useNavigate();
   const [search, setSearch] = useState({
     text: "",
   });
-
   const { auth } = useAuth();
 
+  useEffect(() => {
+    if (!auth) return;
+    api
+      .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
+      .then((res) => {
+        setCartQuantity(res.data.length);
+      });
+    //eslint-disable-next-line
+  }, []);
+
   //eslint-disable-next-line
-  function handleSearch() { }
+  function handleSearch() {}
 
   return (
     <Container>
       <UpperBar>
-        <img src={Logo} alt="mega-store-logo-png" onClick={() => navigate("/")} />
+        <img
+          src={Logo}
+          alt="mega-store-logo-png"
+          onClick={() => navigate("/")}
+        />
         <SearchBar>
           <form>
             <Input
@@ -47,19 +61,19 @@ export default function Header() {
               required
             />
             <SearchLogo type="submit">
-              <ion-icon onClick={() => handleSearch()} name="search-outline"></ion-icon>
+              <ion-icon
+                onClick={() => handleSearch()}
+                name="search-outline"
+              ></ion-icon>
             </SearchLogo>
           </form>
         </SearchBar>
         <UserEnvironment to="/login">
-          {auth?.name
-            ? <span>Olá, {auth.name}</span>
-            : <span>Entrar</span>
-          }
+          {auth?.name ? <span>Olá, {auth.name}</span> : <span>Entrar</span>}
         </UserEnvironment>
         <Cart to="/cart">
           <ion-icon name="cart-outline"></ion-icon>
-          <TotalItensCart>{totalItensCart}</TotalItensCart>
+          <TotalItensCart>{cartQuantity}</TotalItensCart>
         </Cart>
       </UpperBar>
       <LowerBar>

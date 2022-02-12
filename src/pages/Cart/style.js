@@ -63,6 +63,8 @@ const Image = styled.img`
   width: 150px;
   height: 150px;
   object-fit: contain;
+
+  cursor: pointer;
 `;
 
 const RightContainer = styled.div`
@@ -74,6 +76,8 @@ const RightContainer = styled.div`
 const Name = styled.div`
   margin-bottom: 10px;
   font-weight: bold;
+  
+  cursor: pointer;
 `;
 
 const Price = styled.div`
