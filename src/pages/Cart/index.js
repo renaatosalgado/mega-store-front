@@ -27,12 +27,14 @@ export default function Cart() {
   let orderSum = item * quantity;
   let total = orderSum;
   const { auth } = useAuth();
+  const [cartQuantity, setcartQuantity] = useState(0);
 
   useEffect(() => {
     api
       .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
       .then((res) => {
         setCart(res.data);
+        setcartQuantity(res.data.length);
       })
       .catch((err) => console.log(err));
     //eslint-disable-next-line
@@ -53,7 +55,7 @@ export default function Cart() {
   return (
     <>
       <HeaderContainer>
-        <Header />
+        <Header itensQuantity={cartQuantity} />
       </HeaderContainer>
       <Container>
         <Title>

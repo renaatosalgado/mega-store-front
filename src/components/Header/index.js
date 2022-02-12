@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Input,
@@ -14,9 +14,12 @@ import {
 } from "./style";
 
 import Logo from "../../assets/img/mega-store-logo-blank.png";
+import api from "../../services/api";
+import useAuth from "../../hooks/useAuth";
 
-export default function Header() {
-  let totalItensCart = 14;
+export default function Header({ itensQuantity }) {
+  const { auth } = useAuth();
+  let totalItensCart = itensQuantity;
   //eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
   //eslint-disable-next-line
@@ -25,12 +28,16 @@ export default function Header() {
     text: "",
   });
   //eslint-disable-next-line
-  function handleSearch() { }
+  function handleSearch() {}
 
   return (
     <Container>
       <UpperBar>
-        <img src={Logo} alt="mega-store-logo-png" onClick={() => navigate("/")} />
+        <img
+          src={Logo}
+          alt="mega-store-logo-png"
+          onClick={() => navigate("/")}
+        />
         <SearchBar>
           <form>
             <Input
