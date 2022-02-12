@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Input,
@@ -14,19 +14,28 @@ import {
 } from "./style";
 
 import Logo from "../../assets/img/mega-store-logo-blank.png";
+import CartContext from "../../contexts/CartContext";
 import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
 
-export default function Header({ itensQuantity }) {
-  const { auth } = useAuth();
-  let totalItensCart = itensQuantity;
+export default function Header() {
+  const { setCartQuantity, cartQuantity } = useContext(CartContext);
   //eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
-  //eslint-disable-next-line
   const navigate = useNavigate();
   const [search, setSearch] = useState({
     text: "",
   });
+  const { auth } = useAuth();
+
+  useEffect(() => {
+    if (!auth) return;
+    api
+      .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
+      .then((res) => {
+        setCartQuantity(res.data.length);
+      });
+  }, []);
   //eslint-disable-next-line
   function handleSearch() {}
 
@@ -59,7 +68,7 @@ export default function Header({ itensQuantity }) {
         </UserEnvironment>
         <Cart to="/cart">
           <ion-icon name="cart-outline"></ion-icon>
-          <TotalItensCart>{totalItensCart}</TotalItensCart>
+          <TotalItensCart>{cartQuantity}</TotalItensCart>
         </Cart>
       </UpperBar>
       <LowerBar>
