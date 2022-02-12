@@ -15,9 +15,6 @@ import {
 
 import Logo from "../../assets/img/mega-store-logo-blank.png";
 
-import { SearchOutline } from "react-ionicons";
-import { CartOutline } from "react-ionicons";
-
 export default function Header() {
   let totalItensCart = 14;
   //eslint-disable-next-line

@@ -27,14 +27,11 @@ const ScrollButton = () => {
 
     return (
         <Button>
-            <CaretUpOutline
+            <ion-icon
                 onClick={scrollToTop}
-                style={{ display: visible ? 'inline' : 'none' }}
-                color={'#FFF'}
-                border={'1px solid #0227CC'}
-                height="50px"
-                width="50px"
-            />
+                style={{ display: visible ? 'content' : 'none' }}
+                name="caret-up-outline">
+            </ion-icon>
         </Button>
     );
 }
