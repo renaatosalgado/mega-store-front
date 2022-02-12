@@ -25,10 +25,7 @@ const ScrollButton = () => {
 
     return (
         <Button isVisible={visible}>
-            <ion-icon
-                onClick={scrollToTop}
-                name="caret-up-outline">
-            </ion-icon>
+            <ion-icon onClick={scrollToTop} name="arrow-up-circle-outline"></ion-icon>
         </Button>
     );
 }

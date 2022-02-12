@@ -37,14 +37,11 @@ export default function MainPage() {
 
   async function handleProducts() {
     setLoading(true);
-
     try {
       const booksPromise = await api.getBooks([]);
       const cellphonesPromise = await api.getCellphones([]);
       const gamesPromise = await api.getGames([]);
       const homeThingsPromise = await api.getHomeThings([]);
-
-      console.log(cellphonesPromise.data);
 
       setBooks(booksPromise.data);
       setCellphones(cellphonesPromise.data);
@@ -83,7 +80,7 @@ export default function MainPage() {
             >
               <HorizontalScrollButton
                 right={false}
-                onClick={() => scroll(-100, ref1)}
+                onClick={() => scroll(-200, ref1)}
               >
                 <ion-icon name="chevron-back-outline"></ion-icon>
               </HorizontalScrollButton>
@@ -96,7 +93,7 @@ export default function MainPage() {
                 !isLoading &&
                 Array.from(cellphones).map((cellphone, id) => (
                   <Items
-                    onClick={() => navigate(`/products/${cellphone._id}`)}
+                    onClick={() => navigate(`/product/${cellphone._id}`)}
                     key={id}
                   >
                     <div className="image-wrapper">
@@ -117,7 +114,7 @@ export default function MainPage() {
             </ItemsContainer>
             <HorizontalScrollButton
               right={true}
-              onClick={() => scroll(100, ref1)}
+              onClick={() => scroll(200, ref1)}
             >
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </HorizontalScrollButton>
@@ -131,7 +128,7 @@ export default function MainPage() {
             >
               <HorizontalScrollButton
                 right={false}
-                onClick={() => scroll(-100, ref2)}
+                onClick={() => scroll(-200, ref2)}
               >
                 <ion-icon name="chevron-back-outline"></ion-icon>
               </HorizontalScrollButton>
@@ -144,7 +141,7 @@ export default function MainPage() {
                 !isLoading &&
                 Array.from(books).map((book, id) => (
                   <Items
-                    onClick={() => navigate(`/products/${book._id}`)}
+                    onClick={() => navigate(`/product/${book._id}`)}
                     key={id}
                   >
                     <div className="image-wrapper">
@@ -165,7 +162,7 @@ export default function MainPage() {
             </ItemsContainer>
             <HorizontalScrollButton
               right={true}
-              onClick={() => scroll(100, ref2)}
+              onClick={() => scroll(200, ref2)}
             >
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </HorizontalScrollButton>
@@ -179,7 +176,7 @@ export default function MainPage() {
             >
               <HorizontalScrollButton
                 right={false}
-                onClick={() => scroll(-100, ref3)}
+                onClick={() => scroll(-200, ref3)}
               >
                 <ion-icon name="chevron-back-outline"></ion-icon>
               </HorizontalScrollButton>
@@ -192,7 +189,7 @@ export default function MainPage() {
                 !isLoading &&
                 Array.from(games).map((game, id) => (
                   <Items
-                    onClick={() => navigate(`/products/${game._id}`)}
+                    onClick={() => navigate(`/product/${game._id}`)}
                     key={id}
                   >
                     <div className="image-wrapper">
@@ -213,7 +210,7 @@ export default function MainPage() {
             </ItemsContainer>
             <HorizontalScrollButton
               right={true}
-              onClick={() => scroll(100, ref3)}
+              onClick={() => scroll(200, ref3)}
             >
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </HorizontalScrollButton>
@@ -227,7 +224,7 @@ export default function MainPage() {
             >
               <HorizontalScrollButton
                 right={false}
-                onClick={() => scroll(-100, ref4)}
+                onClick={() => scroll(-200, ref4)}
               >
                 <ion-icon name="chevron-back-outline"></ion-icon>
               </HorizontalScrollButton>
@@ -240,7 +237,7 @@ export default function MainPage() {
                 !isLoading &&
                 Array.from(homeThings).map((homeThing, id) => (
                   <Items
-                    onClick={() => navigate(`/products/${homeThing._id}`)}
+                    onClick={() => navigate(`/product/${homeThing._id}`)}
                     key={id}
                   >
                     <div className="image-wrapper">
@@ -261,7 +258,7 @@ export default function MainPage() {
             </ItemsContainer>
             <HorizontalScrollButton
               right={true}
-              onClick={() => scroll(100, ref4)}
+              onClick={() => scroll(200, ref4)}
             >
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </HorizontalScrollButton>

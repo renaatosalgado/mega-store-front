@@ -70,6 +70,12 @@ function getHomeThings() {
   return promise;
 }
 
+function getInformatics() {
+  const promise = axios.get(`${BASE_URL}/informatics`);
+
+  return promise;
+}
+
 const api = {
   postLogin,
   postSignUp,
@@ -82,6 +88,7 @@ const api = {
   getFashion,
   getBooks,
   getHomeThings,
+  getInformatics
 };
 
 export default api;
