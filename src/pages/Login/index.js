@@ -5,14 +5,18 @@ import {
   Button,
   StyledLink,
   Title,
-  Logo,
 } from "../../components/Form";
+
 import { ThreeDots } from "react-loader-spinner";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import Swal from "sweetalert2";
 import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
+import LogoContainer from "../../components/Form/LogoContainer";
+import LogoImg from "../../assets/img/mega-store-logo-blank.png";
+import Footer from "../../components/Form/Footer";
 
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -74,7 +78,9 @@ export default function Login() {
 
   return (
     <>
-      <Logo to="/">MegaStore</Logo>
+      <LogoContainer>
+        <img src={LogoImg} alt="mega-store-logo-png" onClick={() => navigate("/")} />
+      </LogoContainer>
       <Container>
         <Title>Faça seu login</Title>
         <Form onSubmit={handleSubmit}>
@@ -105,8 +111,12 @@ export default function Login() {
           </Button>
         </Form>
 
-        <StyledLink to="/sign-up">Primeira vez? Cadastre-se</StyledLink>
+        <StyledLink to="/sign-up">
+          <span>Primeira vez?</span>
+          <span>Cadastre-se!</span>
+        </StyledLink>
       </Container>
+      <Footer />
     </>
   );
 }

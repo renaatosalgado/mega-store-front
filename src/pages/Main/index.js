@@ -56,6 +56,7 @@ export default function MainPage() {
         }
     }
 
+    // referências para os scrolls horizontais de cada container
     const ref1 = useRef(null);
     const ref2 = useRef(null);
     const ref3 = useRef(null);
@@ -73,7 +74,7 @@ export default function MainPage() {
             <Container>
                 <SubContainer>
                     <Department>
-                        <DepHeader>Celulares</DepHeader>
+                        <DepHeader>CELULARES</DepHeader>
                         <ItemsContainer isLoading={isLoading} className="sliderContainer" ref={ref1}>
                             <HorizontalScrollButton right={false} onClick={() => scroll(-200, ref1)}>
                                 <ion-icon name="chevron-back-outline"></ion-icon>
@@ -98,7 +99,7 @@ export default function MainPage() {
                         </HorizontalScrollButton>
                     </Department>
                     <Department>
-                        <DepHeader>Livros</DepHeader>
+                        <DepHeader>LIVROS</DepHeader>
                         <ItemsContainer isLoading={isLoading} className="sliderContainer" ref={ref2}>
                             <HorizontalScrollButton right={false} onClick={() => scroll(-200, ref2)}>
                                 <ion-icon name="chevron-back-outline"></ion-icon>
@@ -123,7 +124,7 @@ export default function MainPage() {
                         </HorizontalScrollButton>
                     </Department>
                     <Department>
-                        <DepHeader>Games e PC Gamer</DepHeader>
+                        <DepHeader>GAMES E PC GAMER</DepHeader>
                         <ItemsContainer isLoading={isLoading} className="sliderContainer" ref={ref3}>
                             <HorizontalScrollButton right={false} onClick={() => scroll(-200, ref3)}>
                                 <ion-icon name="chevron-back-outline"></ion-icon>
@@ -148,7 +149,7 @@ export default function MainPage() {
                         </HorizontalScrollButton>
                     </Department>
                     <Department>
-                        <DepHeader>Casa</DepHeader>
+                        <DepHeader>CASA</DepHeader>
                         <ItemsContainer isLoading={isLoading} className="sliderContainer" ref={ref4}>
                             <HorizontalScrollButton right={false} onClick={() => scroll(-200, ref4)}>
                                 <ion-icon name="chevron-back-outline"></ion-icon>

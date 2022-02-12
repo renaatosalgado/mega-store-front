@@ -11,7 +11,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import api from "../../services/api";
-import { Logo } from "../../components/Form";
+import LogoContainer from "../../components/Form/LogoContainer";
+import LogoImg from "../../assets/img/mega-store-logo-blank.png";
+import Footer from "../../components/Form/Footer";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -84,7 +86,9 @@ export default function SignUp() {
   }
   return (
     <>
-      <Logo to="/">MegaStore</Logo>
+      <LogoContainer>
+        <img src={LogoImg} alt="mega-store-logo-png" onClick={() => navigate("/")} />
+      </LogoContainer>
       <Container>
         <Title>Crie seu cadastro</Title>
 
@@ -135,8 +139,12 @@ export default function SignUp() {
           </Button>
         </Form>
 
-        <StyledLink to="/login">Já tem uma conta? Entre agora!</StyledLink>
+        <StyledLink to="/login">
+          <span> Já tem uma conta?</span>
+          <span>Entre agora!</span>
+        </StyledLink>
       </Container>
+      <Footer />
     </>
   );
 }
