@@ -35,6 +35,7 @@ export default function Header() {
       .then((res) => {
         setCartQuantity(res.data.length);
       });
+      //eslint-disable-next-line
   }, []);
   //eslint-disable-next-line
   function handleSearch() {}

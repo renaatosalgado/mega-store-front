@@ -26,6 +26,7 @@ export default function Cart() {
   const [cartItens, setCartItens] = useState([]);
   const [itemQuantity, setItemQuantity] = useState(1);
   const { auth } = useAuth();
+  //eslint-disable-next-line
   const { cartQuantity, setcartQuantity } = useContext(CartContext);
   const navigate = useNavigate();
   let item = 180;
