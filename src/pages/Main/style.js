@@ -14,7 +14,8 @@ const Container = styled.main`
   min-height: calc(100vh - 130px);
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;  
 
   background-color: #FFF;
 `;
@@ -91,8 +92,7 @@ const ItemsContainer = styled.div`
 `;
 
 const Items = styled.div`
-  min-width: 150px;
-  height: 100%;
+  max-width: 150px;
 
   display: flex;
   flex-direction: column;
