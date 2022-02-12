@@ -9,9 +9,9 @@ const ScrollButton = () => {
     const toggleVisible = () => {
         const scrolled = document.documentElement.scrollTop;
 
-        if (scrolled > 300) {
+        if (scrolled > 400) {
             setVisible(true);
-        } else if (scrolled < 300) {
+        } else if (scrolled < 400) {
             setVisible(false);
         }
     };
@@ -26,10 +26,9 @@ const ScrollButton = () => {
     window.addEventListener('scroll', toggleVisible);
 
     return (
-        <Button>
+        <Button isVisible={visible}>
             <ion-icon
                 onClick={scrollToTop}
-                style={{ display: visible ? 'content' : 'none' }}
                 name="caret-up-outline">
             </ion-icon>
         </Button>

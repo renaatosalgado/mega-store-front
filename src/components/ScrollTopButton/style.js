@@ -10,7 +10,9 @@ export const Button = styled.div`
    z-index: 1;
    cursor: pointer;
 
-   color: #000;
+   color: #0377FF;
+
+   display: ${props => props.isVisible ? 'inline' : 'none'};
 `;
 
 export default Button;
