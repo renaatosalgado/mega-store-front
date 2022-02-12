@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Button from "./style";
 
-import { CaretUpOutline } from 'react-ionicons'
-
 const ScrollButton = () => {
     const [visible, setVisible] = useState(false);
 
