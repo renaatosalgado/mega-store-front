@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Input,
@@ -20,20 +20,30 @@ import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Logo from "../../assets/img/mega-store-logo-blank.png";
+import CartContext from "../../contexts/CartContext";
+import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
 
 export default function Header() {
-
-  let totalItensCart = 0;
+  const { setCartQuantity, cartQuantity } = useContext(CartContext);
   //eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
-  //eslint-disable-next-line
   const navigate = useNavigate();
   const [search, setSearch] = useState({
     text: "",
   });
 
   const { auth, logout } = useAuth();
+
+  useEffect(() => {
+    if (!auth) return;
+    api
+      .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
+      .then((res) => {
+        setCartQuantity(res.data.length);
+      });
+    //eslint-disable-next-line
+  }, []);
 
   //eslint-disable-next-line
   function handleSearch() { }
@@ -74,7 +84,11 @@ export default function Header() {
   return (
     <Container>
       <UpperBar>
-        <img src={Logo} alt="mega-store-logo-png" onClick={() => navigate("/")} />
+        <img
+          src={Logo}
+          alt="mega-store-logo-png"
+          onClick={() => navigate("/")}
+        />
         <SearchBar>
           <form>
             <Input
@@ -87,7 +101,10 @@ export default function Header() {
               required
             />
             <SearchLogo type="submit">
-              <ion-icon onClick={() => handleSearch()} name="search-outline"></ion-icon>
+              <ion-icon
+                onClick={() => handleSearch()}
+                name="search-outline"
+              ></ion-icon>
             </SearchLogo>
           </form>
         </SearchBar>
@@ -133,7 +150,7 @@ export default function Header() {
         </UserEnvironment>
         <Cart to="/cart">
           <ion-icon name="cart-outline"></ion-icon>
-          <TotalItensCart>{totalItensCart}</TotalItensCart>
+          <TotalItensCart>{cartQuantity}</TotalItensCart>
         </Cart>
       </UpperBar>
       <LowerBar>

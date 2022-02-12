@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Button } from "../../components/Form";
 import Header from "../../components/Header";
 import api from "../../services/api";
@@ -19,6 +19,7 @@ import Swal from "sweetalert2";
 import { ThreeDots } from "react-loader-spinner";
 import ScrollButton from "../../components/ScrollTopButton";
 import Footer from "../../components/Footer";
+import CartContext from "../../contexts/CartContext";
 
 export default function SingleProduct() {
   const [product, setProduct] = useState({});
@@ -27,6 +28,7 @@ export default function SingleProduct() {
   const { auth } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const { cartQuantity, setCartQuantity } = useContext(CartContext);
 
   useEffect(() => {
     api
@@ -54,6 +56,7 @@ export default function SingleProduct() {
       .then(() => {
         setIsLoading(false);
         navigate("/cart");
+        setCartQuantity(cartQuantity + 1);
       })
       .catch((err) => {
         Swal.fire({

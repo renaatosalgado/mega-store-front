@@ -1,6 +1,8 @@
 import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
 
-const BASE_URL = "https://mega-store-back-driven.herokuapp.com";
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function postLogin(body) {
   const promise = axios.post(`${BASE_URL}/login`, body);

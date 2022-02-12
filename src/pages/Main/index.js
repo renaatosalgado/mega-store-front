@@ -19,11 +19,10 @@ import { useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 
 export default function MainPage() {
-
-    const [books, setBooks] = useState('');
-    const [cellphones, setCellphones] = useState('');
-    const [games, setGames] = useState('');
-    const [homeThings, setHomeThings] = useState('');
+    const [books, setBooks] = useState("");
+    const [cellphones, setCellphones] = useState("");
+    const [games, setGames] = useState("");
+    const [homeThings, setHomeThings] = useState("");
 
     const [isLoading, setLoading] = useState(false);
     // const [error, setError] = useState(false);
@@ -56,7 +55,6 @@ export default function MainPage() {
         }
     }
 
-    // referências para os scrolls horizontais de cada container
     const ref1 = useRef(null);
     const ref2 = useRef(null);
     const ref3 = useRef(null);
@@ -182,6 +180,3 @@ export default function MainPage() {
         </>
     );
 }
-
-
-
