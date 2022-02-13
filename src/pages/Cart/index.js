@@ -34,6 +34,7 @@ export default function Cart() {
   let total = orderSum;
 
   useEffect(() => {
+    if (!auth) return;
     api
       .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
       .then((res) => {
