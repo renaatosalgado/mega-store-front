@@ -47,14 +47,12 @@ export default function Cart() {
 
   function addQuantity(productId) {
     setItemQuantity(itemQuantity + 1);
-    console.log(itemQuantity);
   }
 
   function removeQuantity(productId) {
     if (itemQuantity > 0) {
       setItemQuantity(itemQuantity - 1);
     }
-    console.log(itemQuantity);
   }
 
   return (

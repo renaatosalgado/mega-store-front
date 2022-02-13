@@ -118,6 +118,8 @@ const Items = styled.div`
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    object-fit: contain;
   }
 
   .info-wrapper {

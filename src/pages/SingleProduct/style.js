@@ -70,7 +70,7 @@ const RightContainer = styled.div`
 
 const ProductPrice = styled.p`
   font-size: 32px;
-  margin: 30px 40px 60px 30px;
+  margin: 30px 40px 20px 30px;
 `;
 
 const Description = styled.div`
@@ -97,6 +97,21 @@ const FooterContainer = styled.div`
   bottom: 0;
 `;
 
+const Quantity = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+
+  .add,
+  .remove {
+    cursor: pointer;
+  }
+
+  .quantity {
+    margin: 0 10px;
+  }
+`;
+
 export {
   Container,
   Main,
@@ -107,5 +122,6 @@ export {
   Description,
   HeaderContainer,
   FooterContainer,
-  MainContainer
+  MainContainer,
+  Quantity
 };
