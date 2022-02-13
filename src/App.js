@@ -11,6 +11,7 @@ import FashionDept from "./pages/Departments/Fashion";
 import GamesDept from "./pages/Departments/Games";
 import HomeThingsDept from "./pages/Departments/HomeThings";
 import InformaticsDept from "./pages/Departments/Informatics";
+import FinishOrder from "./pages/FinishOrder";
 
 export default function App() {
   const [cartQuantity, setCartQuantity] = useState(0);
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/games" element={<GamesDept />} />
             <Route path="/home-things" element={<HomeThingsDept />} />
             <Route path="/informatics" element={<InformaticsDept />} />
+            <Route path="/thank-you" element={<FinishOrder />} />
           </Routes>
         </BrowserRouter>
       </CartContext.Provider>
