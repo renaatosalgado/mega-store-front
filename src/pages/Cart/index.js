@@ -15,6 +15,7 @@ import {
   TotalContainer,
   FinishButton,
   RemoveProduct,
+  NoCart,
 } from "./style";
 
 import { RemoveCircleOutline, AddCircleOutline } from "react-ionicons";
@@ -29,6 +30,7 @@ import CartContext from "../../contexts/CartContext";
 export default function Cart() {
   const [cartItens, setCartItens] = useState([]);
   //const [isLoading, setIsLoading] = useState(false);
+  const [hasCart, setHasCart] = useState(false);
 
   const { auth } = useAuth();
   //eslint-disable-next-line
@@ -44,8 +46,14 @@ export default function Cart() {
       .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
       .then((res) => {
         setCartItens(res.data);
+        if (!res.data || res.data.length === 0) {
+          return setHasCart(false);
+        }
+        setHasCart(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
     //eslint-disable-next-line
   }, []);
 
@@ -102,67 +110,79 @@ export default function Cart() {
           <h1>Carrinho de compras</h1>
         </Title>
         <ItemsContainer>
-          {cartItens.map((product, index) => (
-            <Product key={index}>
-              <div>
-                <Image
-                  src={product.image}
-                  onClick={() => navigate(`/product/${product._id}`)}
-                />
-                <RightContainer>
-                  <Name onClick={() => navigate(`/product/${product._id}`)}>
-                    {product.name}
-                  </Name>
-                  <Price>R$ {product.price}</Price>
-                  <Quantity>
-                    <div
-                      className="remove"
-                      onClick={() => {
-                        removeQuantity(product._id, product.quantity);
-                      }}
-                    >
-                      <RemoveCircleOutline
-                        color={"red"}
-                        height="20px"
-                        title={"Remover"}
-                        width="20px"
-                      />
-                    </div>
-                    <div className="quantity">{product.quantity}</div>
-                    <div
-                      className="add"
-                      onClick={() => {
-                        addQuantity(product._id, product.quantity);
-                      }}
-                    >
-                      <AddCircleOutline
-                        color={"green"}
-                        height="20px"
-                        title={"Acrescentar"}
-                        width="20px"
-                      />
-                    </div>
-                  </Quantity>
-                </RightContainer>
-              </div>
-              <RemoveProduct onClick={() => removeItem(product._id)}>
-                Remover item
-              </RemoveProduct>
-            </Product>
-          ))}
+          {hasCart ? (
+            <>
+              {cartItens.map((product, index) => (
+                <Product key={index}>
+                  <div>
+                    <Image
+                      src={product.image}
+                      onClick={() => navigate(`/product/${product._id}`)}
+                    />
+                    <RightContainer>
+                      <Name onClick={() => navigate(`/product/${product._id}`)}>
+                        {product.name}
+                      </Name>
+                      <Price>R$ {product.price}</Price>
+                      <Quantity>
+                        <div
+                          className="remove"
+                          onClick={() => {
+                            removeQuantity(product._id, product.quantity);
+                          }}
+                        >
+                          <RemoveCircleOutline
+                            color={"red"}
+                            height="20px"
+                            title={"Remover"}
+                            width="20px"
+                          />
+                        </div>
+                        <div className="quantity">{product.quantity}</div>
+                        <div
+                          className="add"
+                          onClick={() => {
+                            addQuantity(product._id, product.quantity);
+                          }}
+                        >
+                          <AddCircleOutline
+                            color={"green"}
+                            height="20px"
+                            title={"Acrescentar"}
+                            width="20px"
+                          />
+                        </div>
+                      </Quantity>
+                    </RightContainer>
+                  </div>
+                  <RemoveProduct onClick={() => removeItem(product._id)}>
+                    Remover item
+                  </RemoveProduct>
+                </Product>
+              ))}
+            </>
+          ) : (
+            <NoCart>
+              <p>Seu carrinho ainda está vazio!</p>
+            </NoCart>
+          )}
         </ItemsContainer>
-        <TotalContainer>
-          <Total>
-            <p>Frete único: R$ 25,00</p>
-            <p className="total">
-              Total com frete ={" "}
-              <strong>R$ {total.toFixed(2).replace(".", ",")}</strong>
-            </p>
-          </Total>
-          <FinishButton onClick={() => handleFinish()}>
-            Finalizar Compra
-          </FinishButton>
-        </TotalContainer>
+        {hasCart ? (
+          <TotalContainer>
+            <Total>
+              <p>Frete único: R$ 25,00</p>
+              <p className="total">
+                Total com frete ={" "}
+                <strong>R$ {total.toFixed(2).replace(".", ",")}</strong>
+              </p>
+            </Total>
+            <FinishButton onClick={() => handleFinish()}>
+              Finalizar Compra
+            </FinishButton>
+          </TotalContainer>
+        ) : (
+          ""
+        )}
       </Container>
       <ScrollButton />
       <FooterContainer>

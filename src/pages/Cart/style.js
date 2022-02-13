@@ -176,6 +176,13 @@ const FooterContainer = styled.div`
   background-color: #eaeaea;
 `;
 
+const NoCart = styled.div`
+  font-size: 22px;
+  text-align: center;
+
+  margin: 50px;
+`
+
 export {
   Container,
   HeaderContainer,
@@ -191,5 +198,6 @@ export {
   ItemsContainer,
   TotalContainer,
   FinishButton,
-  RemoveProduct
+  RemoveProduct,
+  NoCart
 };
