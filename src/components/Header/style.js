@@ -53,15 +53,16 @@ const DepartmentLink = styled(Link)`
   font-weight: 700;
   line-height: 17.61px;
 
-  padding: 5px 15px;
-  border-radius: 5px;
+  padding: 10px 15px;
+  margin-top: 3px;
+
+  border-radius: 3px;
 
   color: #fff;
 
   &:hover {
     background-color: #1565C0;
     transition: 0.5s;
-    opacity: 0.9;
   }
 `;
 
