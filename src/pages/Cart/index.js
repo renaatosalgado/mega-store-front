@@ -36,9 +36,8 @@ export default function Cart() {
   //eslint-disable-next-line
   const { cartQuantity, setCartQuantity } = useContext(CartContext);
   const navigate = useNavigate();
-  let item = 180;
-  let orderSum = item * 4;
-  let total = orderSum;
+
+  let finalPrice;
 
   useEffect(() => {
     if (!auth) return;
@@ -54,6 +53,7 @@ export default function Cart() {
       .catch((err) => {
         console.log(err);
       });
+    calculateTotalPrice();
     //eslint-disable-next-line
   }, []);
 
@@ -96,6 +96,18 @@ export default function Cart() {
         headers: { Authorization: `Bearer ${auth.token}` },
       })
       .then(window.location.reload());
+  }
+
+  function calculateTotalPrice() {
+    let totalOrderPrice = 0;
+
+    cartItens.forEach((item) => {
+      const totalItemPrice = item.price * item.quantity;
+      totalOrderPrice += totalItemPrice;
+    });
+
+    finalPrice = (totalOrderPrice + 25).toFixed(2).replace(".", ",");
+    return finalPrice;
   }
 
   function handleFinish() {}
@@ -172,8 +184,7 @@ export default function Cart() {
             <Total>
               <p>Frete único: R$ 25,00</p>
               <p className="total">
-                Total com frete ={" "}
-                <strong>R$ {total.toFixed(2).replace(".", ",")}</strong>
+                Total com frete = <strong>R$ {calculateTotalPrice()}</strong>
               </p>
             </Total>
             <FinishButton onClick={() => handleFinish()}>
