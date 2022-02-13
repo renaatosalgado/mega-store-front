@@ -11,6 +11,10 @@ import {
   Price,
   Quantity,
   FooterContainer,
+  ItemsContainer,
+  TotalContainer,
+  FinishButton,
+  RemoveProduct,
 } from "./style";
 
 import { RemoveCircleOutline, AddCircleOutline } from "react-ionicons";
@@ -78,6 +82,16 @@ export default function Cart() {
     window.location.reload();
   }
 
+  function removeItem(productId) {
+    api
+      .deleteItemFromCart(productId, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      })
+      .then(window.location.reload());
+  }
+
+  function handleFinish() {}
+
   return (
     <>
       <HeaderContainer>
@@ -87,56 +101,68 @@ export default function Cart() {
         <Title>
           <h1>Carrinho de compras</h1>
         </Title>
-        {cartItens.map((product, index) => (
-          <Product key={index}>
-            <Image
-              src={product.image}
-              onClick={() => navigate(`/product/${product._id}`)}
-            />
-            <RightContainer>
-              <Name onClick={() => navigate(`/product/${product._id}`)}>
-                {product.name}
-              </Name>
-              <Price>R$ {product.price}</Price>
-              <Quantity>
-                <div
-                  className="remove"
-                  onClick={() => {
-                    removeQuantity(product._id, product.quantity);
-                  }}
-                >
-                  <RemoveCircleOutline
-                    color={"red"}
-                    height="20px"
-                    title={"Remover"}
-                    width="20px"
-                  />
-                </div>
-                <div className="quantity">{product.quantity}</div>
-                <div
-                  className="add"
-                  onClick={() => {
-                    addQuantity(product._id, product.quantity);
-                  }}
-                >
-                  <AddCircleOutline
-                    color={"green"}
-                    height="20px"
-                    title={"Acrescentar"}
-                    width="20px"
-                  />
-                </div>
-              </Quantity>
-            </RightContainer>
-          </Product>
-        ))}
-        <Total>
-          <p>Frete único: R$ 25,00</p>
-          <p className="total">
-            Total com frete ={" "}
-            <strong>R$ {total.toFixed(2).replace(".", ",")}</strong>
-          </p>
-        </Total>
+        <ItemsContainer>
+          {cartItens.map((product, index) => (
+            <Product key={index}>
+              <div>
+                <Image
+                  src={product.image}
+                  onClick={() => navigate(`/product/${product._id}`)}
+                />
+                <RightContainer>
+                  <Name onClick={() => navigate(`/product/${product._id}`)}>
+                    {product.name}
+                  </Name>
+                  <Price>R$ {product.price}</Price>
+                  <Quantity>
+                    <div
+                      className="remove"
+                      onClick={() => {
+                        removeQuantity(product._id, product.quantity);
+                      }}
+                    >
+                      <RemoveCircleOutline
+                        color={"red"}
+                        height="20px"
+                        title={"Remover"}
+                        width="20px"
+                      />
+                    </div>
+                    <div className="quantity">{product.quantity}</div>
+                    <div
+                      className="add"
+                      onClick={() => {
+                        addQuantity(product._id, product.quantity);
+                      }}
+                    >
+                      <AddCircleOutline
+                        color={"green"}
+                        height="20px"
+                        title={"Acrescentar"}
+                        width="20px"
+                      />
+                    </div>
+                  </Quantity>
+                </RightContainer>
+              </div>
+              <RemoveProduct onClick={() => removeItem(product._id)}>
+                Remover item
+              </RemoveProduct>
+            </Product>
+          ))}
+        </ItemsContainer>
+        <TotalContainer>
+          <Total>
+            <p>Frete único: R$ 25,00</p>
+            <p className="total">
+              Total com frete ={" "}
+              <strong>R$ {total.toFixed(2).replace(".", ",")}</strong>
+            </p>
+          </Total>
+          <FinishButton onClick={() => handleFinish()}>
+            Finalizar Compra
+          </FinishButton>
+        </TotalContainer>
       </Container>
       <ScrollButton />
       <FooterContainer>

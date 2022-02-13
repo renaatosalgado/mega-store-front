@@ -45,6 +45,8 @@ const LowerBar = styled.div`
 `;
 
 const DepartmentLink = styled(Link)`
+  height: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,15 +55,10 @@ const DepartmentLink = styled(Link)`
   font-weight: 700;
   line-height: 17.61px;
 
-  padding: 5px 15px;
-  border-radius: 5px;
-
   color: #fff;
 
   &:hover {
-    background-color: #1565C0;
-    transition: 0.5s;
-    opacity: 0.9;
+    border-bottom: 2px solid #fff;
   }
 `;
 
@@ -69,6 +66,8 @@ const SearchBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding-left: 20px;
 
   form {
     position: relative;
@@ -136,24 +135,35 @@ const Cart = styled(Link)`
   width: 50px;
   height: 30px;
 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
   font-size: 30px;
   color: #FFF;
 
-  padding-right: 30px;
-
-  position: relative;
+  padding: 25px;
+  border-radius: 50%;
 
   cursor: pointer;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:hover {
+    background-color: #FFF;
+    color: #000;
+    transition: 0.8s;
+  }
 `;
 
 const TotalItensCart = styled.span`
   font-size: 20px;
   font-weight: 700;
   line-height: 21px;
-
-  position: absolute;
-  top: 5px;
-  right: 0;
 `;
 
 export {

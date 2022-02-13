@@ -18,7 +18,7 @@ const Button = styled.button`
   text-align: center;
 
   background-color: #1565C0;
-  color: #ffffff;
+  color: #fff;
 
   &:hover {
     filter: brightness(120%);
