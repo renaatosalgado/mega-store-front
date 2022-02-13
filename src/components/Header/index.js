@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Input,
@@ -13,11 +13,10 @@ import {
   DepartmentLink,
 } from "./style";
 
-
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Logo from "../../assets/img/mega-store-logo-blank.png";
 import CartContext from "../../contexts/CartContext";
@@ -25,7 +24,7 @@ import api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
 
 export default function Header() {
-  const { setCartQuantity, cartQuantity } = useContext(CartContext);
+  const { cartQuantity } = useContext(CartContext);
   //eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -34,16 +33,6 @@ export default function Header() {
   });
 
   const { auth, setAuth } = useAuth();
-
-  useEffect(() => {
-    if (!auth) return;
-    api
-      .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
-      .then((res) => {
-        setCartQuantity(res.data.length);
-      });
-    //eslint-disable-next-line
-  }, []);
 
   function logout() {
     api.deleteSession(auth.token).then(() => {
@@ -54,7 +43,7 @@ export default function Header() {
   }
 
   //eslint-disable-next-line
-  function handleSearch() { }
+  function handleSearch() {}
   //eslint-disable-next-line
   function handleLogout() {
     logout();
@@ -73,20 +62,20 @@ export default function Header() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#fff',
-        darker: '#053e85',
+        main: "#fff",
+        darker: "#053e85",
       },
       neutral: {
-        main: '#64748B',
-        contrastText: '#fff',
+        main: "#64748B",
+        contrastText: "#fff",
       },
     },
     typography: {
       button: {
         fontSize: 16,
         fontWeight: 400,
-      }
-    }
+      },
+    },
   });
 
   return (
@@ -117,21 +106,19 @@ export default function Header() {
           </form>
         </SearchBar>
         <UserEnvironment>
-          {auth?.name
-            ?
+          {auth?.name ? (
             <ThemeProvider theme={theme}>
               <div>
                 <Button
                   id="demo-positioned-button"
-                  aria-controls={open ? 'demo-positioned-menu' : undefined}
+                  aria-controls={open ? "demo-positioned-menu" : undefined}
                   aria-haspopup="true"
-                  aria-expanded={open ? 'true' : undefined}
+                  aria-expanded={open ? "true" : undefined}
                   onClick={handleClick}
                 >
                   Olá, {auth.name}
                   <ion-icon name="chevron-down-outline"></ion-icon>
                 </Button>
-
 
                 <Menu
                   id="demo-positioned-menu"
@@ -140,12 +127,12 @@ export default function Header() {
                   open={open}
                   onClose={handleClose}
                   anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
+                    vertical: "top",
+                    horizontal: "left",
                   }}
                   transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
+                    vertical: "top",
+                    horizontal: "left",
                   }}
                 >
                   <MenuItem onClick={handleClose}>Meus pedidos</MenuItem>
@@ -156,9 +143,11 @@ export default function Header() {
                 </Menu>
               </div>
             </ThemeProvider>
-            :
-            <Button onClick={() => navigate('/login')} variant="contained">Entrar</Button>
-          }
+          ) : (
+            <Button onClick={() => navigate("/login")} variant="contained">
+              Entrar
+            </Button>
+          )}
         </UserEnvironment>
         <Cart to="/cart">
           <div><ion-icon name="cart-outline"></ion-icon></div>
