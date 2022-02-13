@@ -24,7 +24,7 @@ import CartContext from "../../contexts/CartContext";
 
 export default function Cart() {
   const [cartItens, setCartItens] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  //const [isLoading, setIsLoading] = useState(false);
 
   const { auth } = useAuth();
   //eslint-disable-next-line
