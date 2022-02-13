@@ -56,39 +56,26 @@ export default function Cart() {
         { productId, newQuantity },
         { headers: { Authorization: `Bearer ${auth.token}` } }
       )
-      .then(
-        api
-          .getItensFromCart({
-            headers: { Authorization: `Bearer ${auth.token}` },
-          })
-          .then((res) => {
-            setCartItens(res.data);
-          })
-          .catch((err) => console.log(err))
-      );
+      .then(window.location.reload());
   }
 
   function removeQuantity(productId, productQuantity) {
-    if (productQuantity > 0) {
+    if (productQuantity <= 1) {
+      api.deleteItemFromCart(productId, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      });
+    }
+
+    if (productQuantity > 1) {
       //setCartQuantity(cartQuantity - 1);
       let newQuantity = productQuantity;
       newQuantity--;
-      api
-        .updateItemQuantity(
-          { productId, newQuantity },
-          { headers: { Authorization: `Bearer ${auth.token}` } }
-        )
-        .then(
-          api
-            .getItensFromCart({
-              headers: { Authorization: `Bearer ${auth.token}` },
-            })
-            .then((res) => {
-              setCartItens(res.data);
-            })
-            .catch((err) => console.log(err))
-        );
+      api.updateItemQuantity(
+        { productId, newQuantity },
+        { headers: { Authorization: `Bearer ${auth.token}` } }
+      );
     }
+    window.location.reload();
   }
 
   return (

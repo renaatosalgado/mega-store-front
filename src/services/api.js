@@ -39,6 +39,12 @@ function updateItemQuantity(body, token) {
   return promise;
 }
 
+function deleteItemFromCart(productId, token) {
+  const promise = axios.delete(`${BASE_URL}/delete-cart-item/${productId}`, token);
+
+  return promise;
+}
+
 function getCellphones() {
   const promise = axios.get(`${BASE_URL}/cellphones`);
 
@@ -101,6 +107,7 @@ const api = {
   getHomeThings,
   getInformatics,
   deleteSession,
+  deleteItemFromCart,
 };
 
 export default api;
