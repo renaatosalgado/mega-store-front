@@ -70,7 +70,6 @@ export default function SingleProduct() {
       })
       .then(() => {
         setIsLoading(false);
-        //navigate("/cart");
         setCartQuantity(cartQuantity + itemQuantity);
       })
       .catch((err) => {

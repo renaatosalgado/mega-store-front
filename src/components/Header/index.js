@@ -35,15 +35,14 @@ export default function Header() {
 
   const { auth, setAuth } = useAuth();
 
-  useEffect(() => {
-    if (!auth) return;
-    api
-      .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
-      .then((res) => {
-        setCartQuantity(res.data.length);
-      });
-    //eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   if (!auth) return;
+  //   api
+  //     .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
+  //     .then((res) => {
+  //     });
+  //   //eslint-disable-next-line
+  // }, []);
 
   function logout() {
     api.deleteSession(auth.token).then(() => {
