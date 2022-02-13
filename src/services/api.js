@@ -76,6 +76,11 @@ function getInformatics() {
   return promise;
 }
 
+function deleteSession(tokenNumber) {
+  const promise = axios.delete(`${BASE_URL}/delete-session/${tokenNumber}`);
+  return promise;
+}
+
 const api = {
   postLogin,
   postSignUp,
@@ -88,7 +93,8 @@ const api = {
   getFashion,
   getBooks,
   getHomeThings,
-  getInformatics
+  getInformatics,
+  deleteSession
 };
 
 export default api;

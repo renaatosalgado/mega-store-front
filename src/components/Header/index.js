@@ -33,7 +33,7 @@ export default function Header() {
     text: "",
   });
 
-  const { auth, logout } = useAuth();
+  const { auth, setAuth } = useAuth();
 
   useEffect(() => {
     if (!auth) return;
@@ -44,6 +44,14 @@ export default function Header() {
       });
     //eslint-disable-next-line
   }, []);
+
+  function logout() {
+    api.deleteSession(auth.token).then(() => {
+      localStorage.removeItem("auth");
+      setAuth(null);
+      navigate("/");
+    });
+  }
 
   //eslint-disable-next-line
   function handleSearch() { }
