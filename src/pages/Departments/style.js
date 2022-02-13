@@ -49,7 +49,7 @@ const InfinityBorder = styled.div`
 
     margin-top: 50px;
 
-    background: #0377FF;
+    background: #1565C0;
 `;
 
 export {

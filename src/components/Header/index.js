@@ -149,7 +149,7 @@ export default function Header() {
           }
         </UserEnvironment>
         <Cart to="/cart">
-          <ion-icon name="cart-outline"></ion-icon>
+          <div><ion-icon name="cart-outline"></ion-icon></div>
           <TotalItensCart>{cartQuantity}</TotalItensCart>
         </Cart>
       </UpperBar>

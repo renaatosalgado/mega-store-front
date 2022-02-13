@@ -36,7 +36,7 @@ const HeaderContainer = styled.div`
 const Title = styled.div`
   width: 100%;
 
-  border-bottom: 1px solid #1976D2;
+  border-bottom: 1px solid #1565C0;
 
   h1 {
     font-size: 28px;

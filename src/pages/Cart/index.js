@@ -60,6 +60,10 @@ export default function Cart() {
     console.log(itemQuantity);
   }
 
+  function handleFinish() {
+
+  }
+
   return (
     <>
       <HeaderContainer>
@@ -125,7 +129,7 @@ export default function Cart() {
               <strong>R$ {total.toFixed(2).replace(".", ",")}</strong>
             </p>
           </Total>
-          <FinishButton onClick={() => navigate("/thank-you")}>Finalizar Compra</FinishButton>
+          <FinishButton onClick={() => handleFinish()}>Finalizar Compra</FinishButton>
         </TotalContainer>
       </Container>
       <ScrollButton />
