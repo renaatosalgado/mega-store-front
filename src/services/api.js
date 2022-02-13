@@ -34,6 +34,17 @@ function getItensFromCart(token) {
   return promise;
 }
 
+function updateItemQuantity(body, token) {
+  const promise = axios.put(`${BASE_URL}/update-quantity`, body, token);
+  return promise;
+}
+
+function deleteItemFromCart(productId, token) {
+  const promise = axios.delete(`${BASE_URL}/delete-cart-item/${productId}`, token);
+
+  return promise;
+}
+
 function getCellphones() {
   const promise = axios.get(`${BASE_URL}/cellphones`);
 
@@ -87,6 +98,7 @@ const api = {
   getSingleProduct,
   postAddToCart,
   getItensFromCart,
+  updateItemQuantity,
   getCellphones,
   getGames,
   getEletro,
@@ -94,7 +106,8 @@ const api = {
   getBooks,
   getHomeThings,
   getInformatics,
-  deleteSession
+  deleteSession,
+  deleteItemFromCart,
 };
 
 export default api;

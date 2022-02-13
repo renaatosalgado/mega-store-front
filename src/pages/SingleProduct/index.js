@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { Button } from "../../components/Form";
+import { RemoveCircleOutline, AddCircleOutline } from "react-ionicons";
 import Header from "../../components/Header";
 import api from "../../services/api";
 import {
@@ -12,6 +13,7 @@ import {
   Description,
   HeaderContainer,
   MainContainer,
+  Quantity,
 } from "./style";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -24,11 +26,14 @@ import CartContext from "../../contexts/CartContext";
 export default function SingleProduct() {
   const [product, setProduct] = useState({});
   const [notFound, setNotFound] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [itemQuantity, setItemQuantity] = useState(1);
+
   const { productId } = useParams();
   const { auth } = useAuth();
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
   const { cartQuantity, setCartQuantity } = useContext(CartContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     api
@@ -46,17 +51,26 @@ export default function SingleProduct() {
   }, []);
 
   function addToCart() {
+    if (itemQuantity === 0) {
+      Swal.fire({
+        icon: "error",
+        title: `Não é possível comprar 0 itens!`,
+        text: "Por favor, modifique a quantidade.",
+      });
+      return;
+    }
+
     if (!auth) return navigate("/login");
+
     setIsLoading(true);
 
     api
-      .postAddToCart(product, {
+      .postAddToCart({...product, quantity: itemQuantity}, {
         headers: { Authorization: `Bearer ${auth.token}` },
       })
       .then(() => {
         setIsLoading(false);
-        navigate("/cart");
-        setCartQuantity(cartQuantity + 1);
+        setCartQuantity(cartQuantity + itemQuantity);
       })
       .catch((err) => {
         Swal.fire({
@@ -66,6 +80,16 @@ export default function SingleProduct() {
         });
         setIsLoading(false);
       });
+  }
+
+  function addQuantity() {
+    setItemQuantity(itemQuantity + 1);
+  }
+
+  function removeQuantity() {
+    if (itemQuantity > 0) {
+      setItemQuantity(itemQuantity - 1);
+    }
   }
 
   return (
@@ -82,7 +106,32 @@ export default function SingleProduct() {
               <ProductImage src={product.image}></ProductImage>
               <RightContainer>
                 <ProductName>{product.name}</ProductName>
-                <ProductPrice>R$ {product.price}</ProductPrice>
+                <ProductPrice>R$ {product.price?.toFixed(2).replace(".", ",")}</ProductPrice>
+                <Quantity>
+                  <div
+                    className="remove"
+                    onClick={removeQuantity}
+                  >
+                    <RemoveCircleOutline
+                      color={"red"}
+                      height="20px"
+                      title={"Remover"}
+                      width="20px"
+                    />
+                  </div>
+                  <div className="quantity">{itemQuantity}</div>
+                  <div
+                    className="add"
+                    onClick={addQuantity}
+                  >
+                    <AddCircleOutline
+                      color={"green"}
+                      height="20px"
+                      title={"Acrescentar"}
+                      width="20px"
+                    />
+                  </div>
+                </Quantity>
                 <Button onClick={addToCart}>
                   {isLoading ? (
                     <ThreeDots color="#FFFFFF" height={50} width={50} />

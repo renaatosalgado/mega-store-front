@@ -28,13 +28,14 @@ import CartContext from "../../contexts/CartContext";
 
 export default function Cart() {
   const [cartItens, setCartItens] = useState([]);
-  const [itemQuantity, setItemQuantity] = useState(1);
+  //const [isLoading, setIsLoading] = useState(false);
+
   const { auth } = useAuth();
   //eslint-disable-next-line
-  const { cartQuantity, setcartQuantity } = useContext(CartContext);
+  const { cartQuantity, setCartQuantity } = useContext(CartContext);
   const navigate = useNavigate();
   let item = 180;
-  let orderSum = item * itemQuantity;
+  let orderSum = item * 4;
   let total = orderSum;
 
   useEffect(() => {
@@ -43,27 +44,53 @@ export default function Cart() {
       .getItensFromCart({ headers: { Authorization: `Bearer ${auth.token}` } })
       .then((res) => {
         setCartItens(res.data);
-        setcartQuantity(res.data.length);
       })
       .catch((err) => console.log(err));
     //eslint-disable-next-line
   }, []);
 
-  function addQuantity(productId) {
-    setItemQuantity(itemQuantity + 1);
-    console.log(itemQuantity);
+  function addQuantity(productId, productQuantity) {
+    console.log(productQuantity);
+    //setCartQuantity(cartQuantity + 1);
+    let newQuantity = productQuantity;
+    newQuantity++;
+    console.log(newQuantity);
+    api
+      .updateItemQuantity(
+        { productId, newQuantity },
+        { headers: { Authorization: `Bearer ${auth.token}` } }
+      )
+      .then(window.location.reload());
   }
 
-  function removeQuantity(productId) {
-    if (itemQuantity > 0) {
-      setItemQuantity(itemQuantity - 1);
+  function removeQuantity(productId, productQuantity) {
+    if (productQuantity <= 1) {
+      api.deleteItemFromCart(productId, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      });
     }
-    console.log(itemQuantity);
+
+    if (productQuantity > 1) {
+      //setCartQuantity(cartQuantity - 1);
+      let newQuantity = productQuantity;
+      newQuantity--;
+      api.updateItemQuantity(
+        { productId, newQuantity },
+        { headers: { Authorization: `Bearer ${auth.token}` } }
+      );
+    }
+    window.location.reload();
   }
 
-  function handleFinish() {
-
+  function removeItem(productId) {
+    api
+      .deleteItemFromCart(productId, {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      })
+      .then(window.location.reload());
   }
+
+  function handleFinish() {}
 
   return (
     <>
@@ -91,7 +118,7 @@ export default function Cart() {
                     <div
                       className="remove"
                       onClick={() => {
-                        removeQuantity(product._id);
+                        removeQuantity(product._id, product.quantity);
                       }}
                     >
                       <RemoveCircleOutline
@@ -101,11 +128,11 @@ export default function Cart() {
                         width="20px"
                       />
                     </div>
-                    <div className="quantity">{itemQuantity}</div>
+                    <div className="quantity">{product.quantity}</div>
                     <div
                       className="add"
                       onClick={() => {
-                        addQuantity(product._id);
+                        addQuantity(product._id, product.quantity);
                       }}
                     >
                       <AddCircleOutline
@@ -118,7 +145,9 @@ export default function Cart() {
                   </Quantity>
                 </RightContainer>
               </div>
-              <RemoveProduct>Remover item</RemoveProduct>
+              <RemoveProduct onClick={() => removeItem(product._id)}>
+                Remover item
+              </RemoveProduct>
             </Product>
           ))}
         </ItemsContainer>
@@ -130,7 +159,9 @@ export default function Cart() {
               <strong>R$ {total.toFixed(2).replace(".", ",")}</strong>
             </p>
           </Total>
-          <FinishButton onClick={() => handleFinish()}>Finalizar Compra</FinishButton>
+          <FinishButton onClick={() => handleFinish()}>
+            Finalizar Compra
+          </FinishButton>
         </TotalContainer>
       </Container>
       <ScrollButton />
