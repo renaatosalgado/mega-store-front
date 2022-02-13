@@ -58,7 +58,8 @@ const DepartmentLink = styled(Link)`
   color: #fff;
 
   &:hover {
-    border-bottom: 2px solid #fff;
+    border-bottom: 3px solid #fff;
+    margin-bottom: -2px;
   }
 `;
 

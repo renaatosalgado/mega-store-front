@@ -62,7 +62,7 @@ export default function Cart() {
   }
 
   function handleFinish() {
-
+    navigate("/thank-you");
   }
 
   return (

@@ -129,6 +129,7 @@ export default function Header() {
                   onClick={handleClick}
                 >
                   Olá, {auth.name}
+                  <ion-icon name="chevron-down-outline"></ion-icon>
                 </Button>
 
 
@@ -148,7 +149,10 @@ export default function Header() {
                   }}
                 >
                   <MenuItem onClick={handleClose}>Meus pedidos</MenuItem>
-                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  <MenuItem onClick={handleLogout}>
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Sair
+                  </MenuItem>
                 </Menu>
               </div>
             </ThemeProvider>
