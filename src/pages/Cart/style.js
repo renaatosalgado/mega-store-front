@@ -1,15 +1,20 @@
 import styled from "styled-components";
 
+
+const OuterContainer = styled.div`
+  max-width: 968px;
+
+  margin: auto;
+`;
+
 const Container = styled.div`
-  background-color: #ffffff;
-
-  width: 968px;
-
   margin: 50px auto;
   margin-bottom: 80px;
 
   border-radius: 10px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.12);
+  
+  background-color: #ffffff;
 
   gap: 30px;
 `;
@@ -174,6 +179,8 @@ const FooterContainer = styled.div`
   align-items: center;
 
   background-color: #eaeaea;
+
+  ${props => props.hasCart && "position: absolute; bottom: 0;"};
 `;
 
 const NoCart = styled.div`
@@ -199,5 +206,6 @@ export {
   TotalContainer,
   FinishButton,
   RemoveProduct,
-  NoCart
+  NoCart,
+  OuterContainer
 };
