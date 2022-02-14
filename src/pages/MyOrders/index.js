@@ -17,9 +17,11 @@ export default function MyOrders() {
   let totalCount = 25;
 
   useEffect(() => {
+    setIsLoading(true)
     api
       .getUserOrders({ headers: { Authorization: `Bearer ${auth.token}` } })
       .then((res) => {
+        setIsLoading(false)
         setUserOrders(res.data.orders);
         console.log(userOrders);
       })
