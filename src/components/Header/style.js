@@ -130,6 +130,10 @@ const UserEnvironment = styled.div`
   align-items: center;
 
   cursor: pointer;
+
+  & > .icon {
+    padding: 5px !important;
+  }
 `;
 
 const Cart = styled(Link)`

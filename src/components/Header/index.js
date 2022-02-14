@@ -43,10 +43,16 @@ export default function Header() {
   }
 
   //eslint-disable-next-line
-  function handleSearch() {}
-  //eslint-disable-next-line
+  function handleSearch() { }
+
+  function handleMyOrders() {
+    handleClose();
+    navigate("/my-orders");
+  }
+
   function handleLogout() {
     logout();
+    handleClose();
     navigate("/");
   }
 
@@ -76,7 +82,10 @@ export default function Header() {
         fontWeight: 400,
       },
     },
+    spacing: 4,
   });
+
+  theme.spacing(2);
 
   return (
     <Container>
@@ -135,7 +144,10 @@ export default function Header() {
                     horizontal: "left",
                   }}
                 >
-                  <MenuItem onClick={handleClose}>Meus pedidos</MenuItem>
+                  <MenuItem onClick={handleMyOrders}>
+                    <ion-icon name="book-outline"></ion-icon>
+                    Meus pedidos
+                  </MenuItem>
                   <MenuItem onClick={handleLogout}>
                     <ion-icon name="log-out-outline"></ion-icon>
                     Sair
