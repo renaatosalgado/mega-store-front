@@ -12,13 +12,15 @@ import GamesDept from "./pages/Departments/Games";
 import HomeThingsDept from "./pages/Departments/HomeThings";
 import InformaticsDept from "./pages/Departments/Informatics";
 import FinishOrder from "./pages/FinishOrder";
+import MyOrders from "./pages/MyOrders";
 
 export default function App() {
   const [cartQuantity, setCartQuantity] = useState(0);
+  const [cartFinish, setCartFinish] = useState([]);
 
   return (
     <AuthProvider>
-      <CartContext.Provider value={{ cartQuantity, setCartQuantity }}>
+      <CartContext.Provider value={{ cartQuantity, setCartQuantity, cartFinish, setCartFinish }}>
         <GlobalStyle />
         <BrowserRouter>
           <Routes>
@@ -35,6 +37,7 @@ export default function App() {
             <Route path="/home-things" element={<HomeThingsDept />} />
             <Route path="/informatics" element={<InformaticsDept />} />
             <Route path="/thank-you" element={<FinishOrder />} />
+            <Route path="/my-orders" element={<MyOrders />} />
           </Routes>
         </BrowserRouter>
       </CartContext.Provider>
