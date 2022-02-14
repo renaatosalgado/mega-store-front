@@ -21,11 +21,10 @@ import api from "../../services/api";
 
 export default function FinishOrder() {
   const { cartFinish } = useContext(CartContext);
-  console.log(cartFinish);
 
   const navigate = useNavigate();
 
-  let totalCount = 25;
+  let finalPrice;
 
   window.scroll(0, 0);
 
@@ -36,14 +35,23 @@ export default function FinishOrder() {
   }
 
   function addOrder() {
-    api.postAddOrder(
-      [ ...cartFinish ],
-      {
-        headers: {
-          Authorization: `Bearer ${auth.token}`,
-        },
-      }
-    );
+    api.postAddOrder([...cartFinish], {
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+    });
+  }
+
+  function calculateTotalPrice() {
+    let totalOrderPrice = 0;
+
+    cartFinish.forEach((item) => {
+      const totalItemPrice = item.price * item.quantity;
+      totalOrderPrice += totalItemPrice;
+    });
+
+    finalPrice = (totalOrderPrice + 25).toFixed(2).replace(".", ",");
+    return finalPrice;
   }
 
   return (
@@ -71,25 +79,19 @@ export default function FinishOrder() {
             <SubContainer>
               <InfoContainer>
                 <span>Informações do pedido</span>
-                {cartFinish?.map(
-                  (item, index) => (
-                    // eslint-disable-next-line no-sequences
-                    (totalCount += item.price),
-                    (
-                      <OrderInfo key={index}>
-                        <div>
-                          <span>{item.name}</span>
-                        </div>
-                        <div>
-                          <span>Quantidade: {item.quantity}</span>
-                          <span>
-                            Preço: R$ {item.price.toFixed(2).replace(".", ",")}
-                          </span>
-                        </div>
-                      </OrderInfo>
-                    )
-                  )
-                )}
+                {cartFinish?.map((item, index) => (
+                  <OrderInfo key={index}>
+                    <div>
+                      <span>{item.name}</span>
+                    </div>
+                    <div>
+                      <span>Quantidade: {item.quantity}</span>
+                      <span>
+                        Preço: R$ {item.price.toFixed(2).replace(".", ",")}
+                      </span>
+                    </div>
+                  </OrderInfo>
+                ))}
                 <TotalContainer>
                   <div>
                     <span>Frete único</span>
@@ -97,7 +99,7 @@ export default function FinishOrder() {
                   </div>
                   <div>
                     <span>R$ 25,00</span>
-                    <span>R$ {totalCount.toFixed(2).replace(".", ",")}</span>
+                    <span>R$ {calculateTotalPrice()}</span>
                   </div>
                 </TotalContainer>
               </InfoContainer>

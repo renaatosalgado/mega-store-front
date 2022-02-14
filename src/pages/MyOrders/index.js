@@ -23,7 +23,6 @@ export default function MyOrders() {
       .then((res) => {
         setIsLoading(false)
         setUserOrders(res.data.orders);
-        console.log(userOrders);
       })
       .catch((err) => console.log(err));
     //eslint-disable-next-line
@@ -51,7 +50,7 @@ export default function MyOrders() {
                   {order?.map(
                     (item, index) => (
                       // eslint-disable-next-line no-sequences
-                      (totalCount += item.price),
+                      (totalCount += (item.price*item.quantity)),
                       (
                         <OrderInfo key={index}>
                           <div>
