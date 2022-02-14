@@ -98,7 +98,7 @@ export default function Header() {
           onClick={() => navigate("/")}
         />
         <SearchBar>
-          <form>
+          <form onSubmit={handleSearch}>
             <Input
               type="text"
               placeholder="O que você está buscando?"
@@ -110,7 +110,6 @@ export default function Header() {
             />
             <SearchLogo type="submit">
               <ion-icon
-                onClick={() => handleSearch()}
                 name="search-outline"
               ></ion-icon>
             </SearchLogo>
