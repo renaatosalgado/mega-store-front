@@ -13,6 +13,7 @@ import HomeThingsDept from "./pages/Departments/HomeThings";
 import InformaticsDept from "./pages/Departments/Informatics";
 import FinishOrder from "./pages/FinishOrder";
 import MyOrders from "./pages/MyOrders";
+import Seach from "./pages/Search";
 
 export default function App() {
   const [cartQuantity, setCartQuantity] = useState(0);
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="/informatics" element={<InformaticsDept />} />
             <Route path="/thank-you" element={<FinishOrder />} />
             <Route path="/my-orders" element={<MyOrders />} />
+            <Route path="/search" element={<Seach />} />
           </Routes>
         </BrowserRouter>
       </CartContext.Provider>
