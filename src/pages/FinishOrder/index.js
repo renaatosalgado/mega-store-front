@@ -37,7 +37,7 @@ export default function FinishOrder() {
 
   function addOrder() {
     api.postAddOrder(
-      { ...cartFinish },
+      [ ...cartFinish ],
       {
         headers: {
           Authorization: `Bearer ${auth.token}`,
