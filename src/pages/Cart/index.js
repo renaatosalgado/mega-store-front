@@ -118,11 +118,10 @@ export default function Cart() {
 
     api.deleteCart({
       headers: {
-        Authorization: `Bearer ${auth.token}`
-      }
-    })
+        Authorization: `Bearer ${auth.token}`,
+      },
+    });
   }
-
 
   return (
     <>
@@ -145,7 +144,9 @@ export default function Cart() {
                         onClick={() => navigate(`/product/${product._id}`)}
                       />
                       <RightContainer>
-                        <Name onClick={() => navigate(`/product/${product._id}`)}>
+                        <Name
+                          onClick={() => navigate(`/product/${product._id}`)}
+                        >
                           {product.name}
                         </Name>
                         <Price>R$ {product.price}</Price>
