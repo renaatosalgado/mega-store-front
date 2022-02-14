@@ -43,7 +43,9 @@ export default function Header() {
   }
 
   //eslint-disable-next-line
-  function handleSearch() { }
+  function handleSearch() {
+    navigate("/search");
+  }
 
   function handleMyOrders() {
     handleClose();
