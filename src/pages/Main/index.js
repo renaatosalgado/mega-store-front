@@ -29,6 +29,7 @@ export default function MainPage() {
   // const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
+  window.scroll(0, 0);
 
   useEffect(() => {
     setLoading(true);

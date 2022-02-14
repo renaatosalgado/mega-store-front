@@ -9,29 +9,33 @@ import checkmark from "../../assets/img/checkmark.gif";
 import { useContext } from "react";
 import CartContext from "../../contexts/CartContext";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import api from "../../services/api";
+// import useAuth from "../../hooks/useAuth";
+// import api from "../../services/api";
 
 export default function FinishOrder() {
 
     const { cartFinish } = useContext(CartContext);
-    const { auth } = useAuth();
-    const navigate = useNavigate();
     console.log(cartFinish);
+
+    const navigate = useNavigate();
 
     let totalCount = 25;
 
-    if (cartFinish.length !== 0) {
-        addOrder();
-    }
+    window.scroll(0, 0);
 
-    function addOrder() {
-        api.postAddOrder({ ...cartFinish }, {
-            headers: {
-                Authorization: `Bearer ${auth.token}`,
-            }
-        });
-    }
+    // const { auth } = useAuth();
+
+    // if (cartFinish.length !== 0) {
+    //     addOrder();
+    // }
+
+    // function addOrder() {
+    //     api.postAddOrder({ ...cartFinish }, {
+    //         headers: {
+    //             Authorization: `Bearer ${auth.token}`,
+    //         }
+    //     });
+    // }
 
     return (
         <>
