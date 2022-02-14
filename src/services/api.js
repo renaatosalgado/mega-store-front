@@ -36,14 +36,12 @@ function getItensFromCart(token) {
 
 function updateItemQuantity(body, token) {
   const promise = axios.put(`${BASE_URL}/update-quantity`, body, token);
+
   return promise;
 }
 
 function deleteItemFromCart(productId, token) {
-  const promise = axios.delete(
-    `${BASE_URL}/delete-cart-item/${productId}`,
-    token
-  );
+  const promise = axios.delete(`${BASE_URL}/delete-cart-item/${productId}`, token);
 
   return promise;
 }
@@ -92,21 +90,25 @@ function getInformatics() {
 
 function deleteSession(tokenNumber) {
   const promise = axios.delete(`${BASE_URL}/delete-session/${tokenNumber}`);
+
   return promise;
 }
 
 function postAddOrder(body, token) {
   const promise = axios.post(`${BASE_URL}/add-order`, body, token);
+
   return promise;
 }
 
 function getUserOrders(token) {
   const promise = axios.get(`${BASE_URL}/get-orders`, token);
+
   return promise;
 }
 
 function deleteCart(token) {
   const promise = axios.delete(`${BASE_URL}/delete-cart`, token);
+
   return promise;
 }
 
